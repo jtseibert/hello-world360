@@ -1,1 +1,1 @@
-web: node hello-world360.html
+web: open hello-world360.html
