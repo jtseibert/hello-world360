@@ -20,15 +20,6 @@ var initParameters = {
 	environment: "https://na30.salesforce.com/services/oauth2/token",
 };
 
-// initParams = {
-//     @WebInitParam(name = "clientId", value =
-//             "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP"),
-//     @WebInitParam(name = "clientSecret", value = "4299800700281945236"),
-//     @WebInitParam(name = "redirectUri", value =
-//             "https://hello-world360.herokuapp.com/"),
-//     @WebInitParam(name = "environment", value =
-//             "https://na30.salesforce.com/services/oauth2/token")  }
-
 HttpClient httpclient = new HttpClient();
 PostMethod post = new PostMethod(environment);
 
