@@ -20,8 +20,8 @@ var initParameters = {
 	environment: "https://na30.salesforce.com/services/oauth2/token",
 };
 
-HttpClient httpclient = new HttpClient();
-PostMethod post = new PostMethod(environment);
+var httpclient = new XMLHttpClient();
+var post = new PostMethod(environment);
 
 post.addParameter("code",code);
 post.addParameter("grant_type","authorization_code");
@@ -32,10 +32,10 @@ post.addParameter("redirect_uri",initParameters.redirectUri);
 //////////////////////////////////////////////////////////////////////////
 
 httpclient.executeMethod(post);
-String responseBody = post.getResponseBodyAsString();
+var responseBody = post.getResponseBodyAsString();
     
-String accessToken = null;
-JSONObject json = null;
+var accessToken = null;
+var json = null;
 try {
     json = new JSONObject(responseBody);
     accessToken = json.getString("access_token");
@@ -47,20 +47,20 @@ try {
 } catch (JSONException e) {
     e.printStackTrace();
 }
-HttpServletResponse httpResponse = (HttpServletResponse)response;
-Cookie session = new Cookie(ACCESS_TOKEN, accessToken);
+var httpResponse = (HttpServletResponse)response;
+var session = new Cookie(ACCESS_TOKEN, accessToken);
 session.setMaxAge(-1); //cookie not persistent, destroyed on browser exit
 httpResponse.addCookie(session);
 
 //////////////////////////////////////////////////////////////////////////
 
-HttpClient httpclient = new HttpClient();
-GetMethod gm = new GetMethod(serviceUrl);
+var httpclient = new HttpClient();
+var gm = new GetMethod(serviceUrl);
      
 //set the token in the header
 gm.setRequestHeader("Authorization", "Bearer "+accessToken);
 //set the SOQL as a query param
-NameValuePair[] params = new NameValuePair[1];
+var params[] = new NameValuePair[1];
         
 /**
 * other option instead of query string, pass just the fields you want back:
@@ -73,9 +73,9 @@ gm.setQueryString(params);
 httpclient.executeMethod(gm);
 String responseBody = gm.getResponseBodyAsString();
 //exception handling removed for brevity
-JSONObject json = new JSONObject(responseBody);
+var json = new JSONObject(responseBody);
   
-JSONArray results = json.getJSONArray("records");
+var results = json.getJSONArray("records");
                      
 for(int i = 0; i < results.length(); i++)
     response.getWriter().write(results.getJSONObject(i).getString("Name")+","
