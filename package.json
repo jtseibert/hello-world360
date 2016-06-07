@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "dependencies": {
-    "express": "4.13.3"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,11 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/jtseibert/hello-world360.git"
   },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
