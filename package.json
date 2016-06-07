@@ -2,7 +2,11 @@
   "name": "hello-world360",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "index.js",
+=======
+  "main": "test.js",
+>>>>>>> af6a9ed5ec602e52e2022b6cb1d9b8f3f33f6eb5
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
