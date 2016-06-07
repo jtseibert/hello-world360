@@ -1,1 +1,1 @@
-web: node hello-world360.html
+web: node main.js
