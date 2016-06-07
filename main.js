@@ -13,12 +13,12 @@ app.listen(app.get('port'), function() {
 
 /////////////////////////////////////////////////////////////////////////
 
-function initParameters() {
-	var clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP";
-	var clientSecret = "4299800700281945236";
-	var redirectUri = "https://hello-world360.herokuapp.com/";
-	var environment = "https://na30.salesforce.com/services/oauth2/token";
-}
+var initParameters = {
+	clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+	clientSecret: "4299800700281945236",
+	redirectUri: "https://hello-world360.herokuapp.com/",
+	environment: "https://na30.salesforce.com/services/oauth2/token",
+};
 
 // initParams = {
 //     @WebInitParam(name = "clientId", value =
@@ -31,11 +31,12 @@ function initParameters() {
 
 HttpClient httpclient = new HttpClient();
 PostMethod post = new PostMethod(environment);
+
 post.addParameter("code",code);
 post.addParameter("grant_type","authorization_code");
-post.addParameter("client_id",clientId);
-post.addParameter("client_secret",clientSecret);
-post.addParameter("redirect_uri",redirectUri);
+post.addParameter("client_id",initParameters.clientID;
+post.addParameter("client_secret",initParameters.clientSecret);
+post.addParameter("redirect_uri",initParameters.redirectUri);
 
 //////////////////////////////////////////////////////////////////////////
 
