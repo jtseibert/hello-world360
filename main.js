@@ -1,5 +1,5 @@
 var express = require('express');
-var $ = require('jquery');
+var $ = require('jQuery');
 
 var app = express();
 
