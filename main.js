@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
 	res.send('Hello World!\n');
 	res.send('Begin Authentication');
 
-	/**************** Begin REST API attempt **********************************/
+	/**************** Begin REST API attempt **********************************
 
 	var access_token;
 	var instance_url;
