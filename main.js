@@ -1,7 +1,7 @@
 var express = require('express');
-var jquery = require('./jquery-1.12.4.js');
+var $ = require('./jquery-1.12.4.js');
 //var authenticate = require('./authenticate.js');
-var $ = jquery();
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
