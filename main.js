@@ -28,8 +28,8 @@ function authenticate(clientID, clientSecret, username, password){
 					+ "&client_secret=" + clientSecret
 					+ "&username=" + username
 					+ "&password=" + password;
-$(document).ready(function() {
-    $.ajax({
+
+    jquery.ajax({
         url: "https://login.salesforce.com/services/oauth2/token",
         type: "POST",
         data: postURL,
@@ -41,7 +41,6 @@ $(document).ready(function() {
         	signature = responseData.signature;
         }
 	});
-});
 }
 
 var initParameters = {
@@ -56,8 +55,7 @@ authenticate(initParameters.clientID,
 				initParameters.username,
 				initParameters.password);
 
-$(document).ready(function() {
-$.ajax({
+jquery.ajax({
 	url: instance_url,
 	type: "POST",
 	data: "services/data/",
@@ -65,5 +63,4 @@ $.ajax({
 	success: function(responseData){
 		res.send(responseData.stringify());
 	} 
-});
 });
