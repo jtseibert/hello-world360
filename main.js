@@ -74,16 +74,23 @@
 
 
 var request = require('request'),
-	sys = require('sys');
-
-request({ uri:'http://www.google.com' }, function (error, response, body) {  
-	if (error && response.statusCode !== 200) {
-		console.log('Error when contacting google.com')
-	}
-
-	// Print the google web page.
-	sys.puts(body);
+	sys = require('sys'),
+	initParameters = {
+		clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+		clientSecret: "4299800700281945236",
+		username: "jacobseibert@magnet360.com",
+		password: "Zedc3093"
+	};
+request('http://www.modulus.io', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        sys.puts(body);
+    }
 });
+// request({ uri:'http://www.google.com' }, function (error, response, body) {  
+// 	if (!error && response.statusCode == 200) {
+// 		sys.puts(body);
+// 	}
+// });
 
 
 
