@@ -1,5 +1,5 @@
 var express = require('express');
-var jquery = require('./jquery-1.12.4');
+var jquery = require('./jquery-1.12.4.js');
 //var authenticate = require('./authenticate.js');
 var app = express();
 
