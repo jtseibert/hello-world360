@@ -3,7 +3,6 @@ var express = require('express');
 //var authenticate = require('./authenticate.js');
 var app = express();
 var $ = require('jQuery');
-$().jquery;
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
