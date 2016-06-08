@@ -16,7 +16,10 @@
     "url": "https://github.com/jtseibert/hello-world360/issues"
   },
   "homepage": "https://github.com/jtseibert/hello-world360#readme",
-  "dependencies": {},
+  "dependencies": {
+    "express": "4.13.3",
+    "jQuery": "1.7.4"
+  },
   "devDependencies": {},
   "description": ""
 }
