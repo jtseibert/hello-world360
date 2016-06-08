@@ -72,37 +72,60 @@
 
 // 	/********************** End REST API attempt *****************************/
 
+var $ = jQuery = require('jquery')(window);
 
-var request = require('request'),
-	sys = require('sys'),
-	// clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
-	// clientSecret = "4299800700281945236",
-	// username = "jacobseibert@magnet360.com",
-	// password = "Zedc3093";
-	
-//var postURL = "grant_type=password&client_id=MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP&client_secret=4299800700281945236&username=jacobseibert@magnet360.com&password=Zedc3093"
 
-// request("https://login.salesforce.com/services/oauth2/token/grant_type=password&client_id=MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP&client_secret=4299800700281945236&username=jacobseibert@magnet360.com&password=Zedc3093", function (error, response, body) {
-//     if (!error && response.statusCode == 200) {
-//         sys.puts(body); // Show the HTML for the Modulus homepage.
-//     }
-// });
+var access_token,
+	instance_url,
+	id,
+	issued_at,
+	signature,
+	clientID,
+	clientSecret,
+	username,
+	password;
 
-request('https://modulus.io', function (error, response, body) {
-    //Check for error
-    if(error){
-        return console.log('Error:', error);
-    }
 
-    //Check for right status code
-    if(response.statusCode !== 200){
-        return console.log('Invalid Status Code Returned:', response.statusCode);
-    }
+	clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP";
+	clientSecret = "4299800700281945236";
+	username = "jacobseibert@magnet360.com";
+	password = "Zedc3093";
 
-    //All is good. Print the body
-    sys.puts(body); // Show the HTML for the Modulus homepage.
+var postURL = "grant_type=password&client_id=" + clientID
+				+ "&client_secret=" + clientSecret
+				+ "&username=" + username
+				+ "&password=" + password;
 
-});
+$(document).ready(function() {
+    $.ajax({
+        url: "https://login.salesforce.com/services/oauth2/token" + postURL,
+        type: "POST",
+        data: postURL,
+        success: function(responseData){
+        	access_token = responseData.access_token;
+        	instance_url = responseData.instance_url;
+        	id = responseData.id;
+        	issued_at = responseData.issued_at;
+        	signature = responseData.signature;
+        }
+	});
+};
+
+authenticate(initParameters.clientID,
+				initParameters.clientSecret,
+				initParameters.username,
+				initParameters.password);
+$(document).ready(function() {
+	$.ajax({
+		url: instance_url,
+		type: "POST",
+		data: "services/data/",
+		authorization: "Bearer " + access_token,
+		success: function(responseData){
+			//res.send(responseData.stringify());
+		} 
+	});
+};
 
 
 
