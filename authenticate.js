@@ -1,4 +1,4 @@
-//var jquery = require('./jquery-1.12.4.js');
+
 
 var access_token;
 var instance_url;
