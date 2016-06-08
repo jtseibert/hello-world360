@@ -82,13 +82,27 @@ var request = require('request'),
 	
 //var postURL = "grant_type=password&client_id=MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP&client_secret=4299800700281945236&username=jacobseibert@magnet360.com&password=Zedc3093"
 
-request("https://login.salesforce.com/services/oauth2/token/grant_type=password&client_id=MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP&client_secret=4299800700281945236&username=jacobseibert@magnet360.com&password=Zedc3093", function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-        sys.puts(body); // Show the HTML for the Modulus homepage.
+// request("https://login.salesforce.com/services/oauth2/token/grant_type=password&client_id=MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP&client_secret=4299800700281945236&username=jacobseibert@magnet360.com&password=Zedc3093", function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//         sys.puts(body); // Show the HTML for the Modulus homepage.
+//     }
+// });
+
+request('https://modulus.io', function (error, response, body) {
+    //Check for error
+    if(error){
+        return console.log('Error:', error);
     }
+
+    //Check for right status code
+    if(response.statusCode !== 200){
+        return console.log('Invalid Status Code Returned:', response.statusCode);
+    }
+
+    //All is good. Print the body
+    sys.puts(body); // Show the HTML for the Modulus homepage.
+
 });
-
-
 
 
 
