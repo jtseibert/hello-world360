@@ -109,7 +109,7 @@ $(document).ready(function() {
         	signature = responseData.signature;
         }
 	});
-};
+});
 
 authenticate(initParameters.clientID,
 				initParameters.clientSecret,
@@ -125,7 +125,7 @@ $(document).ready(function() {
 			//res.send(responseData.stringify());
 		} 
 	});
-};
+});
 
 
 
