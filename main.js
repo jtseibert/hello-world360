@@ -13,17 +13,14 @@ app.get('/', function (req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
   console.log('begin authenticate');
-});
 
-/**************** Begin REST API attempt **********************************/
+  /**************** Begin REST API attempt **********************************/
 
 	var access_token;
 	var instance_url;
 	var id;
 	var issued_at;
 	var signature;
-
-	console.log('begin authenticate');
 
 	function authenticate(clientID, clientSecret, username, password){
 
@@ -71,3 +68,6 @@ app.listen(app.get('port'), function() {
 	};
 
 	/********************** End REST API attempt *****************************/
+
+});
+
