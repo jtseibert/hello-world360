@@ -28,13 +28,14 @@ app.listen(app.get('port'), function() {
 						+ "&client_secret=" + clientSecret
 						+ "&username=" + username
 						+ "&password=" + password;
+		console.log('hello2');
 		var test = function($){
 		    $.ajax({
 		        url: "https://login.salesforce.com/services/oauth2/token",
 		        type: "POST",
 		        data: postURL,
 		        success: function(responseData){
-		        	console.log('hello');
+		        	console.log('hello1');
 		        	access_token = responseData.access_token;
 		        	instance_url = responseData.instance_url;
 		        	id = responseData.id;
@@ -44,7 +45,7 @@ app.listen(app.get('port'), function() {
 			});
 		};
 	}
-
+console.log('hello3');
 	var initParameters = {
 		clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
 		clientSecret: "4299800700281945236",
