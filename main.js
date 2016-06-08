@@ -22,7 +22,7 @@ app.listen(app.get('port'), function() {
 	var issued_at;
 	var signature;
 
-
+	console.log('begin authenticate');
 
 	function authenticate(clientID, clientSecret, username, password){
 
