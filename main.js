@@ -14,7 +14,7 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
 
-/**************** Begin REST API attempt **********************************/
+/**************** Begin REST API attempt ******************************/
 
 	var access_token;
 	var instance_url;
