@@ -7,15 +7,8 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
-	res.send('Hello World!\n');
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-  console.log('begin authenticate');
-  res.send('begin!\n');
-
-  /**************** Begin REST API attempt **********************************/
+	//res.send('Hello World!\n');
+/**************** Begin REST API attempt **********************************/
 
 	var access_token;
 	var instance_url;
@@ -72,3 +65,6 @@ app.listen(app.get('port'), function() {
 
 });
 
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
