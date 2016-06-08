@@ -75,10 +75,10 @@
 
 var request = require('request'),
 	sys = require('sys'),
-	clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
-	clientSecret: "4299800700281945236",
-	username: "jacobseibert@magnet360.com",
-	password: "Zedc3093";
+	clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+	clientSecret = "4299800700281945236",
+	username = "jacobseibert@magnet360.com",
+	password = "Zedc3093";
 	
 var postURL = "grant_type=password&client_id=" + clientID
 				+ "&client_secret=" + clientSecret
