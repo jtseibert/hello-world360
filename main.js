@@ -34,6 +34,7 @@ app.listen(app.get('port'), function() {
 		        type: "POST",
 		        data: postURL,
 		        success: function(responseData){
+		        	console.log('hello');
 		        	access_token = responseData.access_token;
 		        	instance_url = responseData.instance_url;
 		        	id = responseData.id;
