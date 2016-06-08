@@ -73,7 +73,7 @@
 // 	/********************** End REST API attempt *****************************/
 
 var document = require('document');
-var $ = jQuery = require('jquery')(window);
+var $ = jQuery = require('jquery');
 
 
 var access_token,
