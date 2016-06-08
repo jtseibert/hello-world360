@@ -2,6 +2,7 @@ var express = require('express');
 var jquery = require('./jquery-1.12.4.js');
 var authenticate = require('./authenticate.js');
 var app = express();
+var test = authenticate();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -22,7 +23,7 @@ var initParameters = {
 	password: "Zedc3093"
 };
 
-authenticate(initParameters.clientID,
+test.authenticate(initParameters.clientID,
 				initParameters.clientSecret,
 				initParameters.username,
 				initParameters.password);
