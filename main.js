@@ -8,7 +8,13 @@ app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
 	res.send('Hello World!\n');
-	/**************** Begin REST API attempt **********************************/
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+/**************** Begin REST API attempt **********************************/
 
 	var access_token;
 	var instance_url;
@@ -64,9 +70,3 @@ app.get('/', function (req, res) {
 	//};
 
 	/********************** End REST API attempt *****************************/
-
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
