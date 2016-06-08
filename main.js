@@ -30,10 +30,11 @@ app.listen(app.get('port'), function() {
 						+ "&password=" + password;
 		console.log('hello2');
 		var test = function($){
+			console.log('hello0');
 		    $.ajax({
 		        url: "https://login.salesforce.com/services/oauth2/token" + postURL,
 		        type: "POST",
-		        //data: postURL,
+		        data: postURL,
 		        success: function(responseData){
 		        	console.log('hello1');
 		        	access_token = responseData.access_token;
