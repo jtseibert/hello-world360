@@ -17,6 +17,8 @@ app.get('/', function (req, res) {
 	var issued_at;
 	var signature;
 
+	res.send('Begin Authentication');
+
 	function authenticate(clientID, clientSecret, username, password){
 
 		var postURL = "grant_type=password&client_id=" + clientID
