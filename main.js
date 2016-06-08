@@ -29,7 +29,7 @@ function authenticate(clientID, clientSecret, username, password){
 					+ "&username=" + username
 					+ "&password=" + password;
 
-    jquery.ajax({
+    $.ajax({
         url: "https://login.salesforce.com/services/oauth2/token",
         type: "POST",
         data: postURL,
@@ -55,7 +55,7 @@ authenticate(initParameters.clientID,
 				initParameters.username,
 				initParameters.password);
 
-jquery.ajax({
+$.ajax({
 	url: instance_url,
 	type: "POST",
 	data: "services/data/",
