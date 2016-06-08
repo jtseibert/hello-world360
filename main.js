@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 						+ "&client_secret=" + clientSecret
 						+ "&username=" + username
 						+ "&password=" + password;
-		var test = function($){
+		//var test = function($){
 		    $.ajax({
 		        url: "https://login.salesforce.com/services/oauth2/token",
 		        type: "POST",
@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
 		        	signature = responseData.signature;
 		        }
 			});
-		};
+		//};
 	}
 
 	var initParameters = {
@@ -50,7 +50,7 @@ app.get('/', function (req, res) {
 					initParameters.clientSecret,
 					initParameters.username,
 					initParameters.password);
-	var testt = function($){
+	//var testt = function($){
 		$.ajax({
 			url: instance_url,
 			type: "POST",
@@ -60,7 +60,7 @@ app.get('/', function (req, res) {
 				res.send(responseData.stringify());
 			} 
 		});
-	};
+	//};
 
 	/********************** End REST API attempt *****************************/
 	res.send('Bye World!');
