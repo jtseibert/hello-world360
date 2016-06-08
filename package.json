@@ -1,7 +1,6 @@
 {
   "name": "hello-world360",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jtseibert/hello-world360/issues"
   },
-  "homepage": "https://github.com/jtseibert/hello-world360#readme"
+  "homepage": "https://github.com/jtseibert/hello-world360#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "description": ""
 }
