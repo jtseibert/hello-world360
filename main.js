@@ -7,7 +7,13 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
-	//res.send('Hello World!\n');
+	res.send('Hello World!');
+});
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
 /**************** Begin REST API attempt **********************************/
 
 	var access_token;
@@ -56,15 +62,9 @@ app.get('/', function (req, res) {
 			data: "services/data/",
 			authorization: "Bearer " + access_token,
 			success: function(responseData){
-				res.send(responseData.stringify());
+				//res.send(responseData.stringify());
 			} 
 		});
 	};
 
 	/********************** End REST API attempt *****************************/
-
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
