@@ -18,7 +18,18 @@ app.listen(app.get('port'), function() {
 var initParameters = {
 	clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
 	clientSecret: "4299800700281945236",
-	redirectUri: "https://hello-world360.herokuapp.com/",
-	environment: "https://na30.salesforce.com/services/oauth2/token",
+	username: "jacobseibert@magnet360.com",
+	password: "Zedc3093"
 };
 
+authenticate(clientID,clientSecret,username,password);
+
+$.ajax({
+	url: instance_url,
+	type: "POST",
+	data: "services/data/",
+	authorization: "Bearer " + access_token;
+	success: function(responseData){
+		res.send(responseData.stringify());
+	} 
+});
