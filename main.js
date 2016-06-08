@@ -72,7 +72,7 @@
 
 // 	/********************** End REST API attempt *****************************/
 
-var window = require('window');
+var document = require('document');
 var $ = jQuery = require('jquery')(window);
 
 
