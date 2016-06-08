@@ -1,6 +1,7 @@
 var express = require('express');
+var $ = require('jquery');
+
 var app = express();
-var $ = require('jQuery');
 
 app.set('port', (process.env.PORT || 5000));
 
