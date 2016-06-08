@@ -27,18 +27,19 @@ function authenticate(clientID, clientSecret, username, password){
 					+ "&client_secret=" + clientSecret
 					+ "&username=" + username
 					+ "&password=" + password;
-
-    $.ajax({
-        url: "https://login.salesforce.com/services/oauth2/token",
-        type: "POST",
-        data: postURL,
-        success: function(responseData){
-        	access_token = responseData.access_token;
-        	instance_url = responseData.instance_url;
-        	id = responseData.id;
-        	issued_at = responseData.issued_at;
-        	signature = responseData.signature;
-        }
+	$(document).ready(function() {
+	    $.ajax({
+	        url: "https://login.salesforce.com/services/oauth2/token",
+	        type: "POST",
+	        data: postURL,
+	        success: function(responseData){
+	        	access_token = responseData.access_token;
+	        	instance_url = responseData.instance_url;
+	        	id = responseData.id;
+	        	issued_at = responseData.issued_at;
+	        	signature = responseData.signature;
+	        }
+		});
 	});
 }
 
@@ -54,12 +55,18 @@ authenticate(initParameters.clientID,
 				initParameters.username,
 				initParameters.password);
 
-$.ajax({
-	url: instance_url,
-	type: "POST",
-	data: "services/data/",
-	authorization: "Bearer " + access_token,
-	success: function(responseData){
-		res.send(responseData.stringify());
-	} 
+$(document).ready(function() {
+	$.ajax({
+		url: instance_url,
+		type: "POST",
+		data: "services/data/",
+		authorization: "Bearer " + access_token,
+		success: function(responseData){
+			res.send(responseData.stringify());
+		} 
+	});
 });
+
+
+
+
