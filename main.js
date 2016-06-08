@@ -1,8 +1,7 @@
 var express = require('express');
 var jquery = require('./jquery-1.12.4.js');
-var authenticate = require('./authenticate.js');
+//var authenticate = require('./authenticate.js');
 var app = express();
-var test = authenticate();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -16,6 +15,33 @@ app.listen(app.get('port'), function() {
 
 /**************** Begin REST API attempt **********************************/
 
+var access_token;
+var instance_url;
+var id;
+var issued_at;
+var signature;
+
+function authenticate(clientID, clientSecret, username, password){
+
+	var postURL = "grant_type=password&client_id=" + clientID
+					+ "&client_secret=" + clientSecret
+					+ "&username=" + username
+					+ "&password=" + password;
+
+    $.ajax({
+        url: "https://login.salesforce.com/services/oauth2/token",
+        type: "POST",
+        data: postURL,
+        success: function(responseData){
+        	access_token = responseData.access_token;
+        	instance_url = responseData.instance_url;
+        	id = responseData.id;
+        	issued_at = responseData.issued_at;
+        	signature = responseData.signature;
+        }
+	});
+}
+
 var initParameters = {
 	clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
 	clientSecret: "4299800700281945236",
@@ -23,7 +49,7 @@ var initParameters = {
 	password: "Zedc3093"
 };
 
-test.authenticate(initParameters.clientID,
+authenticate(initParameters.clientID,
 				initParameters.clientSecret,
 				initParameters.username,
 				initParameters.password);
