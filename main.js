@@ -1,6 +1,6 @@
 var express = require('express');
-var $ = require('jQuery');
-var jsdom = require('jsdom');
+var $ = require('jquery');
+
 
 var app = express();
 
