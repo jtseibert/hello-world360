@@ -22,7 +22,10 @@ var initParameters = {
 	password: "Zedc3093"
 };
 
-authenticate(clientID,clientSecret,username,password);
+authenticate(initParameters.clientID,
+				initParameters.clientSecret,
+				initParameters.username,
+				initParameters.password);
 
 $.ajax({
 	url: instance_url,
