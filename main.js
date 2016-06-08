@@ -7,7 +7,8 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
-	res.send('Hello World!');
+	res.send('Hello World!\n');
+	res.send('Begin Authentication');
 
 	/**************** Begin REST API attempt **********************************/
 
@@ -17,7 +18,7 @@ app.get('/', function (req, res) {
 	var issued_at;
 	var signature;
 
-	res.send('Begin Authentication');
+
 
 	function authenticate(clientID, clientSecret, username, password){
 
