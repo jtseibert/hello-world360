@@ -81,10 +81,10 @@ var request = require('request'),
 		username: "jacobseibert@magnet360.com",
 		password: "Zedc3093"
 	},
-	postURL = "grant_type=password&client_id=" + clientID
-				+ "&client_secret=" + clientSecret
-				+ "&username=" + username
-				+ "&password=" + password;
+	postURL = "grant_type=password&client_id=" + initParameters.clientID
+				+ "&client_secret=" + initParameters.clientSecret
+				+ "&username=" + initParameters.username
+				+ "&password=" + initParameters.password;
 
 request("https://login.salesforce.com/services/oauth2/token" + postURL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
