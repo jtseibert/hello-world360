@@ -28,7 +28,7 @@ $.ajax({
 	url: instance_url,
 	type: "POST",
 	data: "services/data/",
-	authorization: "Bearer " + access_token;
+	authorization: "Bearer " + access_token,
 	success: function(responseData){
 		res.send(responseData.stringify());
 	} 
