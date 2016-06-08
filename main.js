@@ -75,16 +75,15 @@
 
 var request = require('request'),
 	sys = require('sys'),
-	initParameters = {
-		clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
-		clientSecret: "4299800700281945236",
-		username: "jacobseibert@magnet360.com",
-		password: "Zedc3093"
-	},
-	postURL = "grant_type=password&client_id=" + initParameters.clientID
-				+ "&client_secret=" + initParameters.clientSecret
-				+ "&username=" + initParameters.username
-				+ "&password=" + initParameters.password;
+	clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+	clientSecret: "4299800700281945236",
+	username: "jacobseibert@magnet360.com",
+	password: "Zedc3093";
+	
+var postURL = "grant_type=password&client_id=" + clientID
+				+ "&client_secret=" + clientSecret
+				+ "&username=" + username
+				+ "&password=" + password;
 
 request("https://login.salesforce.com/services/oauth2/token" + postURL, function (error, response, body) {
     if (!error && response.statusCode == 200) {
