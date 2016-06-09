@@ -7,14 +7,14 @@ var app = express();
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (req, res) {
-	res.send('Hello World!\n');
+	res.send('Hello World!');
 });
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
-  console.log('begin authenticate');
+});
 
-  /**************** Begin REST API attempt **********************************/
+/**************** Begin REST API attempt **********************************/
 
 	var access_token;
 	var instance_url;
@@ -28,12 +28,15 @@ app.listen(app.get('port'), function() {
 						+ "&client_secret=" + clientSecret
 						+ "&username=" + username
 						+ "&password=" + password;
+		console.log('hello2');
 		var test = function($){
+			console.log('hello0');
 		    $.ajax({
-		        url: "https://login.salesforce.com/services/oauth2/token",
+		        url: "https://login.salesforce.com/services/oauth2/token" + postURL,
 		        type: "POST",
 		        data: postURL,
 		        success: function(responseData){
+		        	console.log('hello1');
 		        	access_token = responseData.access_token;
 		        	instance_url = responseData.instance_url;
 		        	id = responseData.id;
@@ -43,7 +46,7 @@ app.listen(app.get('port'), function() {
 			});
 		};
 	}
-
+console.log('hello3');
 	var initParameters = {
 		clientID: "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
 		clientSecret: "4299800700281945236",
@@ -62,12 +65,9 @@ app.listen(app.get('port'), function() {
 			data: "services/data/",
 			authorization: "Bearer " + access_token,
 			success: function(responseData){
-				res.send(responseData.stringify());
+				//res.send(responseData.stringify());
 			} 
 		});
 	};
 
 	/********************** End REST API attempt *****************************/
-
-});
-
