@@ -1,28 +1,52 @@
+// var url = 'https://login.salesforce.com/services/oauth2/token',
+//     clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+//     clientSecret = "4299800700281945236",
+//     username = "jacobseibert@magnet360.com",
+//     password = "Zedc3093";
+
+var express = require('express'),
+    app = express();
+
+var oauth2 = require('simple-oauth2')({
+  clientID: "3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+  clientSecret: "4299800700281945236",
+  site: 'https://login.salesforce.com/services/',
+  tokenPath: 'oauth2/token',
+  authorizationPath: 'oauth2/authorize'
+});
+
+// Authorization uri definition
+var authorization_uri = oauth2.authCode.authorizeURL({
+  redirect_uri: 'https://hello-world360.herokuapp.com/',
+  scope: 'full',
+});
+
+// Initial page redirecting to Github
+app.get('/auth', function (req, res) {
+    res.redirect(authorization_uri);
+});
+
+// Callback service parsing the authorization token and asking for the access token
+app.get('/callback', function (req, res) {
+  var code = req.query.code;
+
+  oauth2.authCode.getToken({
+    code: code,
+    redirect_uri: 'http://localhost:3000/callback'
+  }, saveToken);
+
+  function saveToken(error, result) {
+    if (error) { console.log('Access Token Error', error.message); }
+    token = oauth2.accessToken.create(result);
+  }
+});
+
+app.get('/', function (req, res) {
+  res.send('Hello<br><a href="/auth">Log in with Salesforce</a>');
+});
+
+app.listen(3000);
+
+console.log('Express server started on port 3000');
 
 
-var access_token;
-var instance_url;
-var id;
-var issued_at;
-var signature;
-
-function authenticate(clientID, clientSecret, username, password){
-
-	var postURL = "grant_type=password&client_id=" + clientID
-					+ "&client_secret=" + clientSecret
-					+ "&username=" + username
-					+ "&password=" + password;
-
-    $.ajax({
-        url: "https://login.salesforce.com/services/oauth2/token",
-        type: "POST",
-        data: postURL,
-        success: function(responseData){
-        	access_token = responseData.access_token;
-        	instance_url = responseData.instance_url;
-        	id = responseData.id;
-        	issued_at = responseData.issued_at;
-        	signature = responseData.signature;
-        }
-	});
-}
