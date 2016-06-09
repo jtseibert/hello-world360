@@ -1,6 +1,6 @@
-all: hello-world360 tests
+all: app tests
 
-hello-world360: npm_modules 
+app: npm_modules 
 	node src/main.js
 
 tests: npm_modules
