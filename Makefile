@@ -1,7 +1,7 @@
 all: app tests
 
 app: npm_modules 
-	node src/main.js
+	node src/authenticate.js
 
 tests: npm_modules
 	node src/test1.js
