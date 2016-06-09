@@ -89,10 +89,11 @@
 
 
 var jsdom = require("node-jsdom");
+var jquery = require("jquery");
  
 jsdom.env(
   "http://nodejs.org/dist/",
-  ["http://code.jquery.com/jquery.js"],
+  jquery,
   function (errors, window) {
     console.log("there have been", window.$("a").length, "nodejs releases!");
   }
