@@ -1,4 +1,4 @@
-all: app tests
+all: app 
 
 app: npm_modules 
 	node src/authenticate.js
