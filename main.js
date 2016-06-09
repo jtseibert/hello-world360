@@ -78,16 +78,25 @@
 // var jq = require('jQuery').create();
 // var jQuery = require('jQuery').create(myWindow);
 
- var jsdom = require("jsdom");
- var window = jsdom.jsdom().defaultView;
+//  var jsdom = require("jsdom");
+//  var window = jsdom.jsdom().defaultView;
 
-jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
-  	var $ = window.$;
-  	$("body").prepend("<h1>The title</h1>");
-  	console.log($("h1").html());
-});
+// jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
+//   	var $ = window.$;
+//   	$("body").prepend("<h1>The title</h1>");
+//   	console.log($("h1").html());
+// });
 
 
+var jsdom = require("node-jsdom");
+ 
+jsdom.env(
+  "http://nodejs.org/dist/",
+  ["http://code.jquery.com/jquery.js"],
+  function (errors, window) {
+    console.log("there have been", window.$("a").length, "nodejs releases!");
+  }
+);
 
 
 // var access_token,
