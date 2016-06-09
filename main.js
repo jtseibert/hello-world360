@@ -72,7 +72,7 @@
 
 // 	/********************** End REST API attempt *****************************/
 
-var jsdom = require('jsdom').jsdom
+var jsdom = require('jsdom')
   , myWindow = jsdom().createWindow()
   , $ = require('jQuery')
   , jq = require('jQuery').create()
