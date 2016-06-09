@@ -78,8 +78,8 @@
 // var jq = require('jQuery').create();
 // var jQuery = require('jQuery').create(myWindow);
 
-// var jsdom = require("jsdom");
-// var window = jsdom.jsdom().defaultView;
+ var jsdom = require("jsdom");
+ var window = jsdom.jsdom().defaultView;
 
 jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
   var $ = window.$;
