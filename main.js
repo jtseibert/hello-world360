@@ -82,19 +82,20 @@
  var window = jsdom.jsdom().defaultView;
 
 jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
-  var $ = window.$;
-  $("body").prepend("<h1>The title</h1>");
-  console.log($("h1").html());
+  	var $ = window.$;
+  	$("body").prepend("<h1>The title</h1>");
+  	console.log($("h1").html());
+
+  	$("<h1>test passes</h1>").appendTo("body");
+	console.log($("body").html());
+
+	jq("<h2>other test passes</h2>").appendTo("body");
+	console.log(jq("body").html());
+
+	jQuery("<h3>third test passes</h3>").appendTo("body");
+	console.log(jQuery("body").html());
 });
 
-// $("<h1>test passes</h1>").appendTo("body");
-// console.log($("body").html());
-
-// jq("<h2>other test passes</h2>").appendTo("body");
-// console.log(jq("body").html());
-
-// jQuery("<h3>third test passes</h3>").appendTo("body");
-// console.log(jQuery("body").html());
 
 
 
