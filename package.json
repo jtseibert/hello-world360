@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/jtseibert/hello-world360#readme",
   "dependencies": {
-    "express": "4.13.3",
-    "jquery": "2.2.4"
+    "jquery": "1.11.1",
+    "jsdom": "9.2.1"
   },
   "devDependencies": {},
   "description": ""
