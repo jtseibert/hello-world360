@@ -7,6 +7,9 @@
 var express = require('express'),
     app = express();
 
+app.set('views', __dirname + '/../views');
+app.set('view engine', 'ejs');
+
 var oauth2 = require('simple-oauth2')({
   clientID: "3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
   clientSecret: "4299800700281945236",
@@ -43,7 +46,7 @@ app.get('/callback', function (req, res) {
 
 app.get('/', function (req, res) {
   //res.send('Hello<br><a href="/auth">Log in with Salesforce</a>');
-  
+  res.render('main');
 });
 
 app.listen(3000);
