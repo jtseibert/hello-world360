@@ -42,7 +42,8 @@ app.get('/callback', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello<br><a href="/auth">Log in with Salesforce</a>');
+  //res.send('Hello<br><a href="/auth">Log in with Salesforce</a>');
+  
 });
 
 app.listen(3000);
