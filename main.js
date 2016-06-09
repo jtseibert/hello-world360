@@ -85,9 +85,6 @@ jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
   	var $ = window.$;
   	$("body").prepend("<h1>The title</h1>");
   	console.log($("h1").html());
-
-  	$("<h1>test passes</h1>").appendTo("body");
-	console.log($("body").html());
 });
 
 
