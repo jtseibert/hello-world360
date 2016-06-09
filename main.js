@@ -72,61 +72,74 @@
 
 // 	/********************** End REST API attempt *****************************/
 
-var document = require('document');
-var $ = jQuery = require('jquery');
+var jsdom = require('jsdom').jsdom
+  , myWindow = jsdom().createWindow()
+  , $ = require('jQuery')
+  , jq = require('jQuery').create()
+  , jQuery = require('jQuery').create(myWindow);
+
+$("<h1>test passes</h1>").appendTo("body");
+console.log($("body").html());
+
+jq("<h2>other test passes</h2>").appendTo("body");
+console.log(jq("body").html());
+
+jQuery("<h3>third test passes</h3>").appendTo("body");
+console.log(jQuery("body").html());
 
 
-var access_token,
-	instance_url,
-	id,
-	issued_at,
-	signature,
-	clientID,
-	clientSecret,
-	username,
-	password;
+
+// var access_token,
+// 	instance_url,
+// 	id,
+// 	issued_at,
+// 	signature,
+// 	clientID,
+// 	clientSecret,
+// 	username,
+// 	password;
 
 
-	clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP";
-	clientSecret = "4299800700281945236";
-	username = "jacobseibert@magnet360.com";
-	password = "Zedc3093";
+// 	clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP";
+// 	clientSecret = "4299800700281945236";
+// 	username = "jacobseibert@magnet360.com";
+// 	password = "Zedc3093";
 
-var postURL = "grant_type=password&client_id=" + clientID
-				+ "&client_secret=" + clientSecret
-				+ "&username=" + username
-				+ "&password=" + password;
+// var postURL = "grant_type=password&client_id=" + clientID
+// 				+ "&client_secret=" + clientSecret
+// 				+ "&username=" + username
+// 				+ "&password=" + password;
 
-$(document).ready(function() {
-    $.ajax({
-        url: "https://login.salesforce.com/services/oauth2/token" + postURL,
-        type: "POST",
-        data: postURL,
-        success: function(responseData){
-        	access_token = responseData.access_token;
-        	instance_url = responseData.instance_url;
-        	id = responseData.id;
-        	issued_at = responseData.issued_at;
-        	signature = responseData.signature;
-        }
-	});
-});
+// $(document).ready(function() {
+//     $.ajax({
+//         url: "https://login.salesforce.com/services/oauth2/token" + postURL,
+//         type: "POST",
+//         data: postURL,
+//         success: function(responseData){
+//         	access_token = responseData.access_token;
+//         	instance_url = responseData.instance_url;
+//         	id = responseData.id;
+//         	issued_at = responseData.issued_at;
+//         	signature = responseData.signature;
+//         }
+// 	});
+// });
 
-authenticate(initParameters.clientID,
-				initParameters.clientSecret,
-				initParameters.username,
-				initParameters.password);
-$(document).ready(function() {
-	$.ajax({
-		url: instance_url,
-		type: "POST",
-		data: "services/data/",
-		authorization: "Bearer " + access_token,
-		success: function(responseData){
-			//res.send(responseData.stringify());
-		} 
-	});
-});
+// authenticate(initParameters.clientID,
+// 				initParameters.clientSecret,
+// 				initParameters.username,
+// 				initParameters.password);
+// $(document).ready(function() {
+// 	$.ajax({
+// 		url: instance_url,
+// 		type: "POST",
+// 		data: "services/data/",
+// 		authorization: "Bearer " + access_token,
+// 		success: function(responseData){
+// 			//res.send(responseData.stringify());
+// 		} 
+// 	});
+// });
 
 
 
