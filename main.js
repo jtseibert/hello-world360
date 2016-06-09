@@ -72,11 +72,20 @@
 
 // 	/********************** End REST API attempt *****************************/
 
-var jsdom = require('jsdom')
-  , myWindow = jsdom().createWindow()
-  , $ = require('jQuery')
-  , jq = require('jQuery').create()
-  , jQuery = require('jQuery').create(myWindow);
+// var jsdom = require('jsdom');
+// var myWindow = jsdom().createWindow();
+// var $ = require('jQuery');
+// var jq = require('jQuery').create();
+// var jQuery = require('jQuery').create(myWindow);
+
+// var jsdom = require("jsdom");
+// var window = jsdom.jsdom().defaultView;
+
+jsdom.jQueryify(window, "http://code.jquery.com/jquery.js", function () {
+  var $ = window.$;
+  $("body").prepend("<h1>The title</h1>");
+  console.log($("h1").html());
+});
 
 $("<h1>test passes</h1>").appendTo("body");
 console.log($("body").html());
