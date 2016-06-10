@@ -7,7 +7,8 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    https = require('https');
+    https = require('https'),
+    http = require('http');
     
 
 app.set('views', __dirname + '/../views');
@@ -19,10 +20,20 @@ var oauth2 = require('simple-oauth2')({
   site: 'https://login.salesforce.com/services/',
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
-}),
-    url =  'https://na30.salesforce.com/services/data',
+});
+var url =  'https://na30.salesforce.com/services/data',
     theHost = 'https://na30.salesforce.com',
     thePath = '/services/data';
+
+var options = {
+    host: 'na30.salesforce.com',
+    port: 443,
+    path: '/services/data',
+    method: 'GET',
+    // headers: {
+    //     'Content-Type': 'application/json'
+    // }
+};
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
@@ -35,30 +46,48 @@ app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
 });
 
-function getData() {
+/**
+ * getJSON:  REST get request returning JSON object(s)
+ * @param options: http options object
+ * @param callback: callback to pass the results JSON object(s) back
+ */
+function getJSON(options, onResult){
+    console.log("rest::getJSON");
 
-    https.get({
-        host: 'na30.salesforce.com',
-        path: '/services/data'
-    }, function(response) {
-        // Continuously update stream with data
-        var body = '';
-        response.on('data', function(d) {
-            body += d;
+    var prot = options.port == 443 ? https : http;
+    var req = prot.request(options, function(res)
+    {
+        var output = '';
+        console.log(options.host + ':' + res.statusCode);
+        res.setEncoding('utf8');
+
+        res.on('data', function (chunk) {
+            output += chunk;
         });
-        response.on('end', function() {
 
-            // Data reception is done, do whatever with it!
-            return JSON.stringify(body);
+        res.on('end', function() {
+            var obj = JSON.parse(output);
+            onResult(res.statusCode, obj);
         });
     });
 
+    req.on('error', function(err) {
+        res.send('error: ' + err.message);
+    });
+
+    req.end();
 };
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var thing = getData();
-    res.send(thing);
+    getJSON(options,
+        function(statusCode, result)
+        {
+            // I could work with the result html/json here.  I could also just return it
+            console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
+            res.statusCode = statusCode;
+            res.send(result);
+        });
 });
 
 // Callback service parsing the authorization token and asking for the access token
