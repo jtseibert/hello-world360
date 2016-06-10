@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
   res.render('main');
 });
 
-app.listen(3000);
+.listen(process.env.PORT || 5000);
 
 console.log('Express server started on port 3000');
 
