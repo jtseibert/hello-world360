@@ -23,7 +23,8 @@ var oauth2 = require('simple-oauth2')({
 });
 var url =  'https://na30.salesforce.com/services/data',
     theHost = 'https://na30.salesforce.com',
-    thePath = '/services/data';
+    thePath = '/services/data',
+    access_token;
 
 var options = {
     host: 'na30.salesforce.com',
@@ -31,7 +32,7 @@ var options = {
     path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer token',
+        'Authorization': access_token,
         'Content-Type': 'application/json'
     }
 };
