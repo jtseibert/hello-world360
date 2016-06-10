@@ -46,7 +46,7 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var xhr = cors.createCORSRequest('GET',url);
+    var xhr = createCORSRequest('GET',url);
     xhr.send();
 });
 
