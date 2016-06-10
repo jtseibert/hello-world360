@@ -20,7 +20,7 @@ var oauth2 = require('simple-oauth2')({
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
-  redirect_uri: 'https://hello-world360.herokuapp.com/views/data.ejs',
+  redirect_uri: 'https://hello-world360.herokuapp.com/views/data',
   scope: 'full',
 });
 
