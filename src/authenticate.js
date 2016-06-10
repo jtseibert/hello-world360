@@ -28,11 +28,11 @@ var url =  'https://na30.salesforce.com/services/data',
 var options = {
     host: 'na30.salesforce.com',
     port: 443,
-    path: '/services/data',
+    path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
     method: 'GET',
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // }
+    headers: {
+        'Authorization': 'Bearer token'
+    }
 };
 
 // Authorization uri definition
@@ -46,11 +46,6 @@ app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
 });
 
-/**
- * getJSON:  REST get request returning JSON object(s)
- * @param options: http options object
- * @param callback: callback to pass the results JSON object(s) back
- */
 function getJSON(options, onResult){
     console.log("rest::getJSON");
 
