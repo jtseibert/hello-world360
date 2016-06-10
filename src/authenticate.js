@@ -45,8 +45,11 @@ app.get('/callback', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  //res.send('Hello<br><a href="/auth">Log in with Salesforce</a>');
   res.render('main');
+});
+
+app.get('/data', function (req, res) {
+  res.render('data');
 });
 
 app.listen(process.env.PORT || 5000);
