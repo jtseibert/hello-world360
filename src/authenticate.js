@@ -23,7 +23,7 @@ var dataPost = {
     path: '/services/data/v37.0/sobjects/',
     method: 'GET',
     headers: {
-        'Authorization': token
+        'Authorization': 'Bearer token'
     }
 };
 
