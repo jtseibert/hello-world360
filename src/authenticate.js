@@ -33,8 +33,10 @@ function getData(){
             str += JSON.stringify(chunk);
         });
     }
-    var req = http.request(options, callback);
-    str = req.data;
+    var q = http.request(options, callback);
+    str = q.data;
+    console.log(q.data);
+    console.log(str);
 }
 
 // function callback(error,response,body){
