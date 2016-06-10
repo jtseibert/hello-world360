@@ -37,7 +37,7 @@ app.get('/auth', function (req, res) {
 
 function getData() {
 
-    return http.get({
+    http.get({
         host: theHost,
         path: thePath
     }, function(response) {
