@@ -31,11 +31,9 @@ function getData(){
             str += chunk;
         });
         response.on('end', function () {
-            return str;
         });
     }
     var req = http.request(options, callback).end();
-    return req;
 }
 
 // function callback(error,response,body){
@@ -60,7 +58,8 @@ app.get('/auth', function (req, res) {
 app.get('/getData', function (req, res) {
     // var response = request.get('https://na30.salesforce.com/services/data/');
     // res.send(response);
-    res.send(getData);
+    getData;
+    res.send(str);
 });
 
 // Callback service parsing the authorization token and asking for the access token
