@@ -38,7 +38,7 @@ var tokenConfig = {
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
   redirect_uri: 'https://hello-world360.herokuapp.com/data',
-  scope: 'full',
+  scope: 'full'
 });
 
 // Initial page redirecting to Github
