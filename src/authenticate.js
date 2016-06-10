@@ -31,7 +31,8 @@ var options = {
     path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
     method: 'GET',
     headers: {
-        'Authorization': 'Bearer token'
+        'Authorization': 'Bearer token',
+        'Content-Type': 'application/json'
     }
 };
 
