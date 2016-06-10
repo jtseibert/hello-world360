@@ -10,6 +10,8 @@ var express = require('express'),
     http = require('http');
     str = 'hi ';
 
+str += 'hello';
+
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
 
@@ -32,6 +34,7 @@ function getData(){
         });
     }
     var req = http.request(options, callback).end();
+    str = JSON.stringify(req.data);
 }
 
 // function callback(error,response,body){
