@@ -8,7 +8,7 @@ var express = require('express'),
     app = express(),
     request = require('request'),
     cors = require('cors'),
-    XMLHttpRequest = require('xmlhttprequest');
+    invocation = require('xmlhttprequest');
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
@@ -20,8 +20,7 @@ var oauth2 = require('simple-oauth2')({
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
 }),
-    url =  'https://na30.salesforce.com/services/data',
-    invocation = new XMLHttpRequest();
+    url =  'https://na30.salesforce.com/services/data';
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
