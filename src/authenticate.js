@@ -37,7 +37,7 @@ app.get('/auth', function (req, res) {
 
 function getData() {
 
-   http.get({
+    http.get({
         host: 'na30.salesforce.com',
         path: '/services/data'
     }, function(response) {
@@ -49,7 +49,7 @@ function getData() {
         response.on('end', function() {
 
             // Data reception is done, do whatever with it!
-            var str = JSON.stringify(body, null, 2);
+            return JSON.stringify(body);
         });
     });
 
@@ -57,7 +57,8 @@ function getData() {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    getData();
+    var thing = getData();
+    res.send(thing);
 });
 
 // Callback service parsing the authorization token and asking for the access token
