@@ -40,7 +40,7 @@ function getData(thing){
         host: theHost,
         path: thePath
     }, function(response){
-        var body '';
+        var body = '';
         response.on('data', function(d) {
             body += d;
         });
