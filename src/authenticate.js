@@ -24,7 +24,7 @@ var dataPost = {
         path: '/services/data/v35.0/analytics/reports/00O36000005vYLWMAK/describe',
         method: 'GET',
         headers: {
-            'Authorization': access_token
+            'Authorization': 'Bearer ' + access_token
         }
     },
     access_token;
