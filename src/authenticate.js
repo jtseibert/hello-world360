@@ -37,7 +37,7 @@ app.get('/auth', function (req, res) {
 
 function getData() {
 
-    http.get({
+   return http.get({
         host: 'na30.salesforce.com',
         path: '/services/data'
     }, function(response) {
@@ -49,7 +49,7 @@ function getData() {
         response.on('end', function() {
 
             // Data reception is done, do whatever with it!
-            return JSON.stringify(body);
+            var thing = JSON.stringify(body);
         });
     });
 
