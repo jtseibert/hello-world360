@@ -59,7 +59,7 @@ app.get('/auth', function (req, res) {
 app.get('/getData', function (req, res) {
     // var response = request.get('https://na30.salesforce.com/services/data/');
     // res.send(response);
-    getData;
+    getData();
     res.send(str);
 });
 
