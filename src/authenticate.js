@@ -44,9 +44,9 @@ function getData(thing){
         response.on('data', function(d) {
             body += d;
         });
-        response.on('end', function()){
+        response.on('end', function(){
             thing = JSON.stringify(body);
-        }
+        })
     })
 }
 
