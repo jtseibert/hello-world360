@@ -37,7 +37,7 @@ app.get('/auth', function (req, res) {
 
 function getData() {
 
-   return http.get({
+   http.get({
         host: 'na30.salesforce.com',
         path: '/services/data'
     }, function(response) {
