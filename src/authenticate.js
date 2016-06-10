@@ -24,7 +24,7 @@ var oauth2 = require('simple-oauth2')({
 var url =  'https://na30.salesforce.com/services/data',
     theHost = 'https://na30.salesforce.com',
     thePath = '/services/data',
-    access_token;
+    token;
 
 var options = {
     host: 'na30.salesforce.com',
@@ -32,7 +32,7 @@ var options = {
     path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
     method: 'GET',
     headers: {
-        'Authorization': ('Bearer ' + access_token),
+        'Authorization': ('Bearer ' + token),
         'Content-Type': 'application/json'
     }
 };
@@ -89,7 +89,7 @@ app.get('/getData', function (req, res) {
 
 // Callback service parsing the authorization token and asking for the access token
 app.get('/callback', function (req, res) {
-  var code = req.query.code;
+    var code = req.query.code;
 
   oauth2.authCode.getToken({
     code: code,
@@ -99,7 +99,6 @@ app.get('/callback', function (req, res) {
   function saveToken(error, result) {
     if (error) { console.log('Access Token Error', error.message); }
     token = oauth2.accessToken.create(result);
-    access_token = token;
   }
 });
 
