@@ -33,7 +33,7 @@ function getData(){
             str += JSON.stringify(chunk);
         });
     }
-    var req = http.request(options, callback).end();
+    var req = http.request(options, callback);
     str = req.data;
 }
 
