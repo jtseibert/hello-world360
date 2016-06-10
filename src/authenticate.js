@@ -7,7 +7,8 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    cors = require('cors');
+    cors = require('cors'),
+    XMLHttpRequest = require('xmlhttprequest');
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
