@@ -5,7 +5,8 @@
 //     password = "Zedc3093";
 
 var express = require('express'),
-    app = express();
+    app = express(),
+    request = require('request');
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
@@ -18,23 +19,26 @@ var oauth2 = require('simple-oauth2')({
   authorizationPath: 'oauth2/authorize'
 });
 
-var dataPost = {
-        host: 'https://na30.salesforce.com/',
-        port: (process.env.PORT),
-        path: 'services/data/',
+var options = {
+        url: 'https://na30.salesforce.com/services/data/',
         method: 'GET',
         headers: {
+            'Authorization': 'Bearer token'
         }
-    },
-    access_token;
+    };
+
+callback = function(error,response,body){
+    if (!error && response.statusCode == 200) {
+        var info = JSON.parse(body);
+        console.log('Success!');
+    }
+}
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
   redirect_uri: 'https://hello-world360.herokuapp.com/data',
   scope: 'full',
 });
-
-var dataPost_uri = 
 
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
@@ -43,7 +47,7 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    res.redirect(dataPost);
+    res.send(request(options, callback));
 });
 
 // Callback service parsing the authorization token and asking for the access token
