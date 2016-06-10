@@ -49,7 +49,7 @@ function getData() {
         response.on('end', function() {
 
             // Data reception is done, do whatever with it!
-            var thing = JSON.stringify(body);
+            var str = JSON.stringify(body, null, 2);
         });
     });
 
