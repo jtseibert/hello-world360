@@ -19,20 +19,20 @@ var oauth2 = require('simple-oauth2')({
   authorizationPath: 'oauth2/authorize'
 });
 
-var options = {
-        url: 'https://na30.salesforce.com/services/data/',
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer token'
-        }
-    };
+// var options = {
+//         uri: 'https://na30.salesforce.com/services/data/',
+//         method: 'GET',
+//         headers: {
+//             'Authorization': 'Bearer token'
+//         }
+//     };
 
-callback = function(error,response,body){
-    if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        console.log('Success!');
-    }
-}
+// function callback(error,response,body){
+//     if (!error && response.statusCode == 200) {
+//         var info = JSON.parse(body);
+//         console.log('Success!');
+//     }
+// }
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
@@ -47,7 +47,8 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    res.send(request(options, callback));
+    console.log('hello');
+    request.get('https://na30.salesforce.com/services/data/');
 });
 
 // Callback service parsing the authorization token and asking for the access token
