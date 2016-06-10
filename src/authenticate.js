@@ -7,7 +7,7 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    http = require('http');
+    https = require('https');
     
 
 app.set('views', __dirname + '/../views');
@@ -37,8 +37,8 @@ app.get('/auth', function (req, res) {
 
 function getData() {
 
-    http.get({
-        host: 'https://na30.salesforce.com',
+    https.get({
+        host: 'na30.salesforce.com',
         path: '/services/data'
     }, function(response) {
         // Continuously update stream with data
