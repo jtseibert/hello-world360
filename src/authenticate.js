@@ -57,8 +57,7 @@ function getData() {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var thing = getData();
-    res.send(thing);
+    getData();
 });
 
 // Callback service parsing the authorization token and asking for the access token
