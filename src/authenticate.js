@@ -29,11 +29,14 @@ var options = {
         'Content-Type': 'application/json'
     }
 };
-var token;
-var tokenConfig = {
-  code: '<code>',
-  redirect_uri: 'http://localhost:5000/callback'
+var credentials = {
+  clientID: 'MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+  clientSecret: '4299800700281945236',
+  site: 'https://login.salesforce.com/services/oauth2/token'
 };
+
+// Initialize the OAuth2 Library
+var oauth2 = require('simple-oauth2')(credentials);
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
