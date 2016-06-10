@@ -21,7 +21,7 @@ var oauth2 = require('simple-oauth2')({
   authorizationPath: 'oauth2/authorize'
 }),
     url =  'https://na30.salesforce.com/services/data',
-    theHost = 'na30.salesforce.com',
+    theHost = 'https://na30.salesforce.com',
     thePath = '/services/data';
 
 // Authorization uri definition
