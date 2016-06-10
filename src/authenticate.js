@@ -6,7 +6,9 @@
 
 var express = require('express'),
     app = express(),
-    request = require('request');
+    request = require('request'),
+    http = require('http');
+    str = '';
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
@@ -19,13 +21,22 @@ var oauth2 = require('simple-oauth2')({
   authorizationPath: 'oauth2/authorize'
 });
 
-// var options = {
-//         uri: 'https://na30.salesforce.com/services/data/',
-//         method: 'GET',
-//         headers: {
-//             'Authorization': 'Bearer token'
-//         }
-//     };
+function getData(){
+    var options = {
+            host: 'https://na30.salesforce.com',
+            path: '/services/data/'
+        };
+    callback = function(response){
+        response.on('data', function (chunk) {
+            str += chunk;
+        });
+        response.on('end', function () {
+            return str;
+        });
+    }
+    var req = http.request(options, callback).end();
+    return req;
+}
 
 // function callback(error,response,body){
 //     if (!error && response.statusCode == 200) {
@@ -47,8 +58,9 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var response = request.get('https://na30.salesforce.com/services/data/');
-    res.send(response);
+    // var response = request.get('https://na30.salesforce.com/services/data/');
+    // res.send(response);
+    res.send(getData);
 });
 
 // Callback service parsing the authorization token and asking for the access token
