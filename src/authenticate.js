@@ -29,7 +29,7 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 app.use(cors());
 
-var xhr = createCORSRequest('GET',url);
+var xhr = cors.createCORSRequest('GET',url);
 
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
