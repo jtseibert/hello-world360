@@ -47,7 +47,7 @@ app.get('/auth', function (req, res) {
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
     var xhr = createCORSRequest('GET',url);
-    xhr.send();
+    res.send(xhr.send());
 });
 
 // Callback service parsing the authorization token and asking for the access token
