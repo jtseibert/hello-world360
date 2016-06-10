@@ -47,7 +47,7 @@ function getData(thing){
         response.on('end', function(){
             thing = JSON.stringify(body);
         });
-    })
+    });
 }
 
 // Initial page redirecting to Github
