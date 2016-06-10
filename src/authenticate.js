@@ -28,7 +28,7 @@ var url =  'https://na30.salesforce.com/services/data',
 var options = {
     host: 'na30.salesforce.com',
     port: 443,
-    path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
+    path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
     method: 'GET',
     headers: {
         'Authorization': 'Bearer token'
