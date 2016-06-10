@@ -47,7 +47,8 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    res.send(request.get('https://na30.salesforce.com/services/data/'));
+    var response = request.get('https://na30.salesforce.com/services/data/');
+    res.send(response);
 });
 
 // Callback service parsing the authorization token and asking for the access token
