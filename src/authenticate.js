@@ -27,7 +27,6 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
-    res.redirect('https://hello-world360.herokuapp.com/views/data.ejs');
 });
 
 // Callback service parsing the authorization token and asking for the access token
