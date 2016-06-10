@@ -19,7 +19,9 @@
   "dependencies": {
     "express": "4.13.4",
     "simple-oauth2": "0.7.0",
-    "ejs": "2.4.2"
+    "ejs": "2.4.2",
+    "cors": "2.7.1",
+    "xmlhttprequest": "1.8.0"
   },
   "devDependencies": {},
   "description": ""
