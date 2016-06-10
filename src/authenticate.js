@@ -28,9 +28,7 @@ function getData(){
         };
     callback = function(response){
         response.on('data', function (chunk) {
-            str += chunk;
-        });
-        response.on('end', function () {
+            str += JSON.stringify(chunk);
         });
     }
     var req = http.request(options, callback).end();
