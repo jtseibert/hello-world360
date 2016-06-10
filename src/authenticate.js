@@ -20,11 +20,10 @@ var oauth2 = require('simple-oauth2')({
 
 var dataPost = {
         host: 'https://na30.salesforce.com/',
-        port: (process.env.PORT || 5000),
-        path: 'services/data/v35.0/analytics/reports/00O36000005vYLW/describe',
+        port: (process.env.PORT),
+        path: 'services/data/',
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer access_token'
         }
     },
     access_token;
@@ -34,6 +33,8 @@ var authorization_uri = oauth2.authCode.authorizeURL({
   redirect_uri: 'https://hello-world360.herokuapp.com/data',
   scope: 'full',
 });
+
+var dataPost_uri = 
 
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
