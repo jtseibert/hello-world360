@@ -7,8 +7,7 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    cors = require('cors'),
-    XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+    http = request('http');
     
 
 app.set('views', __dirname + '/../views');
@@ -21,7 +20,9 @@ var oauth2 = require('simple-oauth2')({
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
 }),
-    url =  'https://na30.salesforce.com/services/data';
+    url =  'https://na30.salesforce.com/services/data',
+    theHost = 'na30.salesforce.com',
+    thePath = '/services/data';
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
@@ -29,25 +30,31 @@ var authorization_uri = oauth2.authCode.authorizeURL({
   scope: 'full',
 });
 
-app.use(cors());
-
-function createCORSRequest(method, url){
-    xhr = new XMLHttpRequest();
-    xhr.open(method,url);
-    return xhr;
-}
-
-
-
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
 });
 
+function getData(thing){
+    return http.get({
+        host: theHost,
+        path: thePath
+    }, function(response){
+        var body '';
+        response.on('data', function(d) {
+            body += d;
+        });
+        response.on('end', function()){
+            thing = JSON.stringify(body);
+        }
+    })
+}
+
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var xhr = createCORSRequest('GET',url);
-    xhr.send();
+    var thing;
+    getData(thing);
+    res.send(thing);
 });
 
 // Callback service parsing the authorization token and asking for the access token
