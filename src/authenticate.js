@@ -7,10 +7,7 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    http = require('http');
-    str = 'hi ';
-
-str += 'hello';
+    cors = require('cors');
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
@@ -21,36 +18,25 @@ var oauth2 = require('simple-oauth2')({
   site: 'https://login.salesforce.com/services/',
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
-});
-
-function getData(){
-    var options = {
-            host: 'https://na30.salesforce.com',
-            path: '/services/data/'
-        };
-    callback = function(response){
-        response.on('data', function (chunk) {
-            str += JSON.stringify(chunk);
-        });
-    }
-    var q = http.request(options, callback);
-    str = q.data;
-    console.log(q.data);
-    console.log(str);
-}
-
-// function callback(error,response,body){
-//     if (!error && response.statusCode == 200) {
-//         var info = JSON.parse(body);
-//         console.log('Success!');
-//     }
-// }
+}),
+    url =  'https://na30.salesforce.com/services/data',
+    invocation = new XMLHttpRequest();
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
   redirect_uri: 'https://hello-world360.herokuapp.com/data',
   scope: 'full',
 });
+
+app.use(cors());
+
+function callOtherDomain(){
+    if(invocation) {
+        invocation.open('GET',url,true);
+        invocation.onreadystatechange = handler;
+        invocation.send();
+    }
+}
 
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
@@ -59,10 +45,7 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    // var response = request.get('https://na30.salesforce.com/services/data/');
-    // res.send(response);
-    getData();
-    res.send(str);
+    callOtherDomain();
 });
 
 // Callback service parsing the authorization token and asking for the access token
