@@ -8,7 +8,7 @@ var express = require('express'),
     app = express(),
     request = require('request'),
     http = require('http');
-    str = '';
+    str = 'hi ';
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
