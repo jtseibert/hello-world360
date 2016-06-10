@@ -7,8 +7,7 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    cors = require('cors'),
-    invocation = require('xmlhttprequest');
+    cors = require('cors');
 
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
@@ -30,13 +29,7 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 app.use(cors());
 
-function callOtherDomain(){
-    if(invocation) {
-        invocation.open('GET',url,true);
-        invocation.onreadystatechange = handler;
-        invocation.send();
-    }
-}
+var xhr = createCORSRequest('GET',url);
 
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
@@ -45,7 +38,7 @@ app.get('/auth', function (req, res) {
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    callOtherDomain();
+    res.send(xhr.send());
 });
 
 // Callback service parsing the authorization token and asking for the access token
