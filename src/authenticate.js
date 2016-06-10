@@ -34,7 +34,7 @@ function getData(){
         });
     }
     var req = http.request(options, callback).end();
-    str = JSON.stringify(req.data);
+    //str = JSON.stringify(req.data);
 }
 
 // function callback(error,response,body){
