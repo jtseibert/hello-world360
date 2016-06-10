@@ -93,7 +93,7 @@ app.get('/callback', function (req, res) {
     }).catch(function logError(error) {
         console.log('Access Token Error', error.message);
     });
-};
+});
 
 app.get('/', function (req, res) {
   res.render('main');
