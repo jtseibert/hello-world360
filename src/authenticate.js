@@ -35,25 +35,29 @@ app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
 });
 
-function getData(thing){
+function getData() {
+
     return http.get({
         host: theHost,
         path: thePath
-    }, function(response){
+    }, function(response) {
+        // Continuously update stream with data
         var body = '';
         response.on('data', function(d) {
             body += d;
         });
-        response.on('end', function(){
-            thing = JSON.stringify(body);
+        response.on('end', function() {
+
+            // Data reception is done, do whatever with it!
+            return JSON.stringify(body);
         });
     });
-}
+
+};
 
 // Initial page redirecting to Github
 app.get('/getData', function (req, res) {
-    var thing;
-    getData(thing);
+    var thing = getData();
     res.send(thing);
 });
 
