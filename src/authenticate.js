@@ -14,13 +14,6 @@ var express = require('express'),
 app.set('views', __dirname + '/../views');
 app.set('view engine', 'ejs');
 
-var oauth2 = require('simple-oauth2')({
-  clientID: "3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
-  clientSecret: "4299800700281945236",
-  site: 'https://login.salesforce.com/services/',
-  tokenPath: 'oauth2/token',
-  authorizationPath: 'oauth2/authorize'
-});
 var url =  'https://na30.salesforce.com/services/data',
     theHost = 'https://na30.salesforce.com',
     thePath = '/services/data',
@@ -35,6 +28,11 @@ var options = {
         'Authorization': ('Bearer ' + token),
         'Content-Type': 'application/json'
     }
+};
+var token;
+var tokenConfig = {
+  code: '<code>',
+  redirect_uri: 'http://localhost:5000/callback'
 };
 
 // Authorization uri definition
@@ -90,17 +88,12 @@ app.get('/getData', function (req, res) {
 // Callback service parsing the authorization token and asking for the access token
 app.get('/callback', function (req, res) {
     var code = req.query.code;
-
-  oauth2.authCode.getToken({
-    code: code,
-    redirect_uri: 'http://localhost:5000/callback'
-  }, saveToken);
-
-  function saveToken(error, result) {
-    if (error) { console.log('Access Token Error', error.message); }
-    token = oauth2.accessToken.create(result);
-  }
-});
+    oauth2.authCode.getToken(tokenConfig).then(function saveToken(result) {
+            token = oauth2.accessToken.create(result);
+    }).catch(function logError(error) {
+        console.log('Access Token Error', error.message);
+    });
+};
 
 app.get('/', function (req, res) {
   res.render('main');
