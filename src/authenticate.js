@@ -7,7 +7,7 @@
 var express = require('express'),
     app = express(),
     request = require('request'),
-    http = request('http');
+    http = require('http');
     
 
 app.set('views', __dirname + '/../views');
