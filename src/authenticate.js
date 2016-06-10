@@ -17,10 +17,11 @@ var oauth2 = require('simple-oauth2')({
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
 });
+
 var dataPost = {
     host: 'https://na30.salesforce.com',
     port: (process.env.PORT || 5000),
-    path: '/services/data/v37.0/sobjects/',
+    path: '/services/data/v35.0/analytics/reports/00O36000005vYLW/describe',
     method: 'GET',
     headers: {
         'Authorization': 'Bearer token'
