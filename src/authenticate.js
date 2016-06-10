@@ -17,6 +17,15 @@ var oauth2 = require('simple-oauth2')({
   tokenPath: 'oauth2/token',
   authorizationPath: 'oauth2/authorize'
 });
+var dataPost = {
+    host: 'https://na30.salesforce.com',
+    port: (process.env.PORT || 5000),
+    path: '/services/data/v37.0/sobjects/',
+    method: 'GET',
+    headers: {
+        'Authorization': token
+    }
+};
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
@@ -27,6 +36,11 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 // Initial page redirecting to Github
 app.get('/auth', function (req, res) {
     res.redirect(authorization_uri);
+});
+
+// Initial page redirecting to Github
+app.get('/getData', function (req, res) {
+    res.redirect(dataPost);
 });
 
 // Callback service parsing the authorization token and asking for the access token
