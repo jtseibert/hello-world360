@@ -90,7 +90,7 @@ oauth2.authCode.getToken(tokenConfig)
         console.log('AccessToken = ' + token);
     })
     .catch(function logError(error) {
-        console.log('Access Token Error', error.message);
+        console.log('Hello, Access Token Error', error.message);
     });
 /************************************************/
 
