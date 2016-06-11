@@ -17,7 +17,7 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    simple_oauth2 = require('simple-oauth2');
+    oauth2 = require('simple-oauth2');
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -52,10 +52,13 @@ console.log('Express server started on port 5000');
 
 
 /* For oauth2 authentication and token handling */
+// Set the configuration settings
 var credentials = {
-      clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
-      clientSecret: '4299800700281945236',
-      site: 'https://login.salesforce.com/services/oauth2/authorize'
+        clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+        clientSecret: '4299800700281945236',
+        site: 'https://login.salesforce.com',
+        authorizationPath: '/services/oauth2/authorize',
+        tokenPath: '/services/oauth2/access_token'
     };
 
 var token,
