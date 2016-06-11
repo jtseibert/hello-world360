@@ -64,7 +64,7 @@ var credentials = {
 
 var token,
     tokenConfig = {
-        code: code,
+        code: '<code>',
         redirect_uri: 'http://localhost:3000/callback'
     };
 
