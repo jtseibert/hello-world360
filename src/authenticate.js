@@ -87,7 +87,7 @@ app.get('/auth', function (req, res) {
 oauth2.authCode.getToken(tokenConfig)
     .then(function saveToken(result) {
         token = oauth2.accessToken.create(result);
-        console.log('AccessToken = ' token);
+        console.log('AccessToken = ' + token);
     })
     .catch(function logError(error) {
         console.log('Access Token Error', error.message);
