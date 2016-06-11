@@ -130,7 +130,7 @@ function getJSON(options, onResult){
     });
 
     req.on('error', function(err) {
-        res.send('error: ' + err.message);
+        //res.send('error: ' + err.message);
     });
 
     req.end();
