@@ -68,7 +68,7 @@ var token,
     };
 
 // Initialize the OAuth2 Library
-var oauth2 = simple_oauth2(credentials);
+var oauth2 = oauth2(credentials);
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
