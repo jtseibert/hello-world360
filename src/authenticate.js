@@ -84,14 +84,13 @@ app.get('/auth', function (req, res) {
 
 // Promises
 // Save the access token
-oauth2.authCode.getToken(tokenConfig)
-    .then(function saveToken(result) {
-        token = oauth2.accessToken.create(result);
-        console.log('AccessToken = ' + token);
-    })
-    .catch(function logError(error) {
-        console.log('Hello, Access Token Error', error.message);
-    });
+// Callbacks
+// Save the access token
+oauth2.authCode.getToken(tokenConfig, function saveToken(error, result) {
+    if (error) { console.log('Access Token Error', error.message); }
+
+    token = oauth2.accessToken.create(result);
+});
 /************************************************/
 
 
