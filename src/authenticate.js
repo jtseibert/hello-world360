@@ -101,7 +101,7 @@ oauth2.authCode.getToken(tokenConfig)
 var options = {
         host: 'na30.salesforce.com',
         port: 443,
-        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
+        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token,
@@ -130,7 +130,7 @@ function getJSON(options, onResult){
     });
 
     req.on('error', function(err) {
-        //res.send('error: ' + err.message);
+        res.send('error: ' + err.message);
     });
 
     req.end();
