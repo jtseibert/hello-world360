@@ -1,7 +1,7 @@
 
 /**************** Just for reference *************
 var url = 'https://login.salesforce.com/services/oauth2/token',
-    clientID = "MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
+    clientID = "3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP",
     clientSecret = "4299800700281945236",
     username = "jacobseibert@magnet360.com",
     password = "Zedc3093";
@@ -53,7 +53,7 @@ console.log('Express server started on port 5000');
 
 /* For oauth2 authentication and token handling */
 var credentials = {
-      clientID: 'MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+      clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
       clientSecret: '4299800700281945236',
       site: 'https://login.salesforce.com/services/oauth2/token'
     };
