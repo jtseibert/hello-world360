@@ -79,17 +79,15 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 // Initial page redirecting to Salesforce
 app.get('/auth', function (req, res) {
+    // Callbacks
+    // Save the access token
+    oauth2.authCode.getToken(tokenConfig, function saveToken(error, result) {
+        if (error) { console.log('Access Token Error', error.message); }
+
+        token = oauth2.accessToken.create(result);
+    });
+
     res.redirect(authorization_uri);
-});
-
-// Promises
-// Save the access token
-// Callbacks
-// Save the access token
-oauth2.authCode.getToken(tokenConfig, function saveToken(error, result) {
-    if (error) { console.log('Access Token Error', error.message); }
-
-    token = oauth2.accessToken.create(result);
 });
 /************************************************/
 
