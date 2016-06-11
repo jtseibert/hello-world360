@@ -58,12 +58,13 @@ var credentials = {
         clientSecret: '4299800700281945236',
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
-        tokenPath: '/services/oauth2/access_token'
+        tokenPath: '/services/oauth2/access_token',
+        revokePath: '/services/oauth2/revoke'
     };
 
 var token,
     tokenConfig = {
-        code: '<code>',
+        code: code,
         redirect_uri: 'http://localhost:3000/callback'
     };
 
@@ -103,7 +104,7 @@ var options = {
         path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/',
         method: 'GET',
         headers: {
-            'Authorization': ('Bearer ' + token),
+            'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
         }
     };
