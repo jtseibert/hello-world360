@@ -51,49 +51,73 @@ console.log('Express server started on port 5000');
 
 
 
-/* For oauth2 authentication and token handling */
-// Set the configuration settings
-var credentials = {
-        clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
-        clientSecret: '4299800700281945236',
-        site: 'https://login.salesforce.com',
-        authorizationPath: '/services/oauth2/authorize',
-        tokenPath: '/services/oauth2/access_token',
-        revokePath: '/services/oauth2/revoke'
-    };
+// /* For oauth2 authentication and token handling */
+// // Set the configuration settings
+// var credentials = {
+//         clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+//         clientSecret: '4299800700281945236',
+//         site: 'https://login.salesforce.com',
+//         authorizationPath: '/services/oauth2/authorize',
+//         tokenPath: '/services/oauth2/access_token',
+//         revokePath: '/services/oauth2/revoke'
+//     };
 
-var token;
+// var token;
+
+// // Initialize the OAuth2 Library
+// var oauth2 = oauth2(credentials);
+
+// // Authorization uri definition
+// var authorization_uri = oauth2.authCode.authorizeURL({
+//         redirect_uri: 'https://hello-world360.herokuapp.com/callback',
+//         scope: 'full'
+//     });
+
+// // Callbacks
+// app.get('/callback', function (req, res) {
+//     var code = req.query.code;
+
+//     oauth2.authCode.getToken({
+//         code: code,
+//         redirect_uri: 'https://hello-world360.herokuapp.com/data'
+//     }, saveToken);
+
+//     function saveToken(error, result) {
+//         if (error) { console.log('Access Token Error', error.message); }
+//         token = oauth2.accessToken.create(result);
+//     }
+// });
+
+// // Initial page redirecting to Salesforce
+// app.get('/auth', function (req, res) {
+//     res.redirect(authorization_uri);
+// });
+// /************************************************/
+
+
+
+
+
+/***************************************************/
+// Get the access token object.
+var credentials = {
+  clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+  clientSecret: '4299800700281945236',
+  site: 'https://login.salesforce.com/services/oauth2/authorize'
+};
 
 // Initialize the OAuth2 Library
-var oauth2 = oauth2(credentials);
-
-// Authorization uri definition
-var authorization_uri = oauth2.authCode.authorizeURL({
-        redirect_uri: 'http://localhost:5000/callback',
-        scope: 'full'
-    });
+var oauth2 = require('simple-oauth2')(credentials);
+var token;
+var tokenConfig = {};
 
 // Callbacks
-app.get('/callback', function (req, res) {
-    var code = req.query.code;
-
-    oauth2.authCode.getToken({
-        code: code,
-        redirect_uri: 'https://hello-world360.herokuapp.com/data'
-    }, saveToken);
-
-    function saveToken(error, result) {
-        if (error) { console.log('Access Token Error', error.message); }
-        token = oauth2.accessToken.create(result);
-    }
+// Get the access token object for the client
+oauth2.client.getToken(tokenConfig, function saveToken(error, result) {
+  if (error) { console.log('Access Token Error', error.message); }
+  token = oauth2.accessToken.create(result);
 });
-
-// Initial page redirecting to Salesforce
-app.get('/auth', function (req, res) {
-    res.redirect(authorization_uri);
-});
-/************************************************/
-
+/***************************************************/
 
 
 
