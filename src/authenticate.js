@@ -84,13 +84,14 @@ app.get('/callback', function (req, res) {
 
     oauth2.authCode.getToken({
         code: code,
+        grant_type: 'authorization_code',
         client_ID: credentials.clientID,
         client_Secret: credentials.clientSecret,
-        redirect_uri: 'https://hello-world360.herokuapp.com/data'
+        redirect_uri: 'https://hello-world360.herokuapp.com/callback'
     }, saveToken);
 
     function saveToken(error, result) {
-        console.log('entered saveToken, result: ' + result);
+        console.log('entered saveToken, result: ' + result.accessToken);
         if (error) { console.log('Access Token Error: ', error.message); }
         else { 
             console.log('Saving token');
@@ -98,6 +99,7 @@ app.get('/callback', function (req, res) {
             token = oauth2.accessToken.create(result); 
         }
     }
+    res.render('data');
 });
 
 // Initial page redirecting to Salesforce
@@ -112,7 +114,7 @@ app.get('/auth', function (req, res) {
 
 /*************** For getting data ***************/
 var options = {
-        host: 'na30.salesforce.com',
+        host: 'https://na30.salesforce.com',
         port: 443,
         path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
         method: 'GET',
@@ -122,7 +124,12 @@ var options = {
         }
     };
 
-function getJSON(options, onResult){
+// Redirect to pull data from Salesforce
+app.get('/getData', function (req, res) {
+
+    console.log('Entered getData');
+
+    function getJSON(options, onResult){
     console.log("rest::getJSON");
 
     var prot = options.port == 443 ? https : http;
@@ -136,7 +143,7 @@ function getJSON(options, onResult){
             output += chunk;
         });
 
-        res.on('end', function() {
+        res.on('end', function(res) {
             var obj = JSON.parse(output);
             onResult(res.statusCode, obj);
         });
@@ -148,11 +155,6 @@ function getJSON(options, onResult){
 
     req.end();
 };
-
-// Redirect to pull data from Salesforce
-app.get('/getData', function (req, res) {
-
-    console.log('Entered getData');
 
     getJSON(options,
         function(statusCode, result)
