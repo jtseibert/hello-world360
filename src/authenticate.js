@@ -95,7 +95,7 @@ app.get('/callback', function (req, res) {
         console.log('populating options');
         
         options = {
-	        host: 'this is a host test',
+	        host: req.body.token[instance_url],
 	        port: 443,
 	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
 	        method: 'GET',
