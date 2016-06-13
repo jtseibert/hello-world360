@@ -100,7 +100,7 @@ app.get('/callback', function (req, res) {
 	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
 	        method: 'GET',
 	        headers: {
-	            'Authorization': 'Bearer ' + 'this is a token test',
+	            'Authorization': 'Bearer ' + token.token.access_token,
 	            'Content-Type': 'application/json'
 	        }
 	    };
