@@ -107,7 +107,7 @@ app.get('/callback', function (req, res) {
 	    };
 
 	    console.log('options: ' + JSON.stringify(options));
-        hostURL = token.token.instance_url.replace('h''t''p''s'':''//', '');
+        hostURL = token.token.instance_url.replace('https://', '');
         console.log(hostURL);
     }
 
