@@ -119,7 +119,11 @@ var options = {
         }
     };
 
-function getJSON(options, onResult){
+// Redirect to pull data from Salesforce
+app.get('/getData', function (req, res) {
+	console.log('entering getData');
+
+	function getJSON(options, onResult){
     console.log("entering getJSON");
 
     var prot = options.port == 443 ? https : http;
@@ -146,9 +150,6 @@ function getJSON(options, onResult){
     req.end();
 };
 
-// Redirect to pull data from Salesforce
-app.get('/getData', function (req, res) {
-	console.log('entering getData');
     getJSON(options,
         function(statusCode, result)
         {
