@@ -100,7 +100,7 @@ app.get('/callback', function (req, res) {
         options = {
 	        host: hostURL,
 	        port: 443,
-	        path: '/services/data/v35.0/analytics/reports/',
+	        path: '/services/data/v35.0/analytics/reports//00Oa0000008r7sg/describe',
 	        method: 'GET',
 	        headers: {
 	            'Authorization': 'Bearer ' + token.token.access_token,
