@@ -139,7 +139,7 @@ function getJSON(options, onResult){
         });
     });
 
-    req.on('error', function(err) {
+    req.on('error', function(err, res) {
         res.send('error: ' + err.message);
     });
 
