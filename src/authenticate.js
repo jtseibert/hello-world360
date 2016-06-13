@@ -141,7 +141,7 @@ app.get('/getData', function (req, res) {
     });
 
     console.log(data);
-    res.send(data);
+    res.send(d);
 
     req.end();
 
