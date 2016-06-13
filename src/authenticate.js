@@ -126,8 +126,6 @@ app.get('/auth', function (req, res) {
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
 	console.log('entering getData');
-    console.log('options again: ' + JSON.stringify(options));
-
 
     var req = https.request(options, (res) => {
         console.log('statusCode: ', res.statusCode);
@@ -140,6 +138,7 @@ app.get('/getData', function (req, res) {
     req.end();
 
     req.on('error', (e) => {
+        console.log('Error found');
         console.error(e);
     });
 
