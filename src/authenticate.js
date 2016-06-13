@@ -83,7 +83,7 @@ app.get('/callback', function (req, res) {
     console.log(code);
 
     oauth2.authCode.getToken({
-        grant_type: authorization_code,
+        grant_type: 'authorization_code',
         code: code,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
