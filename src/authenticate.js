@@ -80,6 +80,9 @@ app.get('/data', function (req, res) {
 
     oauth2.authCode.getToken({
         code: code,
+        grant_type: 'authorization_uri',
+        client_id: credentials.clientID,
+        client_secret: credentials.clientSecret,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
 
