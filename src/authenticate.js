@@ -69,7 +69,7 @@ var oauth2 = oauth2(credentials);
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
-        redirect_uri: 'https://hello-world360.herokuapp.com/callback',
+        redirect_uri: 'https://hello-world360.herokuapp.com/data',
         scope: 'full'
     });
 
@@ -83,7 +83,6 @@ app.get('/callback', function (req, res) {
     console.log(code);
 
     oauth2.authCode.getToken({
-        grant_type: 'authorization_code',
         code: code,
         client_ID: credentials.clientID,
         client_Secret: credentials.clientSecret,
