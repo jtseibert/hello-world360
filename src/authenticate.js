@@ -128,7 +128,7 @@ app.get('/getData', function (req, res) {
 	console.log('entering getData');
 
     options = {
-            host: token.token.instance_url,
+            host: token.token.instance_url + '/services/data/v37.0/sobjects/',
             port: 443,
             path: '/services/data/v37.0/sobjects/',
             method: 'GET',
