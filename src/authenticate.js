@@ -98,7 +98,7 @@ app.get('/callback', function (req, res) {
 	        host: token.token.instance_url,
 	        port: 443,
 	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
-	        method: 'GET',
+	        method: 'GET'
 	        headers: {
 	            'Authorization': 'Bearer ' + token.token.access_token,
 	            'Content-Type': 'application/json'
@@ -127,41 +127,57 @@ app.get('/auth', function (req, res) {
 app.get('/getData', function (req, res) {
 	console.log('entering getData');
 
-	function getJSON(options, onResult){
-	    console.log("entering getJSON");
 
-	    var prot = options.port == 443 ? https : http;
-	    var req = prot.request(options, function(res)
-	    {
-	        var output = '';
-	        console.log(options.host + ':' + res.statusCode);
-	        res.setEncoding('utf8');
+    var req = https.request(options, (res) => {
+        console.log('statusCode: ', res.statusCode);
+        console.log('headers: ', res.headers);
 
-	        res.on('data', function (chunk) {
-	            output += chunk;
-	        });
-
-	        res.on('end', function(res) {
-	            var obj = JSON.parse(output);
-	            onResult(res.statusCode, obj);
-	        });
-	    });
-
-	    req.on('error', function(err) {
-	        res.send('error: ' + err.message);
-	    });
-
-	    req.end();
-	};
-	//Call *****
-    getJSON(options,
-        function(statusCode, result)
-        {
-            // I could work with the result html/json here.  I could also just return it
-            console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
-            res.statusCode = statusCode;
-            res.send(result);
+        res.on('data', (d) => {
+            process.stdout.write(d);
         });
+    });
+    req.end();
+
+    req.on('error', (e) => {
+        console.error(e);
+    });
+
+
+	// function getJSON(options, onResult){
+	//     console.log("entering getJSON");
+
+	//     var prot = options.port == 443 ? https : http;
+	//     var req = prot.request(options, function(res)
+	//     {
+	//         var output = '';
+	//         console.log(options.host + ':' + res.statusCode);
+	//         res.setEncoding('utf8');
+
+	//         res.on('data', function (chunk) {
+	//             output += chunk;
+	//         });
+
+	//         res.on('end', function(res) {
+	//             var obj = JSON.parse(output);
+	//             onResult(res.statusCode, obj);
+	//         });
+	//     });
+
+	//     req.on('error', function(err) {
+	//         res.send('error: ' + err.message);
+	//     });
+
+	//     req.end();
+	// };
+	// //Call *****
+ //    getJSON(options,
+ //        function(statusCode, result)
+ //        {
+ //            // I could work with the result html/json here.  I could also just return it
+ //            console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
+ //            res.statusCode = statusCode;
+ //            res.send(result);
+ //        });
 });
 /************************************************/
 
