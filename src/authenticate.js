@@ -89,6 +89,7 @@ app.get('/data', function (req, res) {
     function saveToken(error, result) {
         if (error) { console.log('Access Token Error', error.message); }
         token = oauth2.accessToken.create(result);
+        console.log('token is: ' + token);
     }
 });
 
