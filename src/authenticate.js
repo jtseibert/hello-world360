@@ -83,7 +83,7 @@ app.get('/callback', function (req, res) {
         grant_type: 'authorization_uri',
         client_id: credentials.clientID,
         client_secret: credentials.clientSecret,
-        redirect_uri: 'https://hello-world360.herokuapp.com/callback'
+        redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
 
     function saveToken(error, result) {
