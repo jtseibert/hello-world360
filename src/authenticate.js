@@ -104,6 +104,8 @@ app.get('/callback', function (req, res) {
 	            'Content-Type': 'application/json'
 	        }
 	    };
+
+	    console.log(JSON.stringify(options));
     }
 
     res.render('data');
