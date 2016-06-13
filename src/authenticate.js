@@ -95,8 +95,10 @@ app.get('/callback', function (req, res) {
         console.log('token is: ' + JSON.stringify(token));
         console.log('populating options');
         
+        hostURL = token.token.instance_url.replace('https://', '');
+
         options = {
-	        host: 'na30.salesforce.com',
+	        host: hostURL,
 	        port: 443,
 	        path: '/services/data/v37.0/sobjects/',
 	        method: 'GET',
@@ -107,8 +109,6 @@ app.get('/callback', function (req, res) {
 	    };
 
 	    console.log('options: ' + JSON.stringify(options));
-        hostURL = token.token.instance_url.replace('https://', '');
-        console.log(hostURL);
     }
 
     res.render('data');
