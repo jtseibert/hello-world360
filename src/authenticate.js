@@ -80,6 +80,8 @@ app.get('/callback', function (req, res) {
 
     var code = req.query.code;
 
+    console.log(code);
+
     oauth2.authCode.getToken({
         code: code,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
