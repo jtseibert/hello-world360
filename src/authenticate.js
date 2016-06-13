@@ -135,7 +135,6 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', (d) => {
-            data = d;
             process.stdout.write(d);
         });
     });
