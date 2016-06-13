@@ -69,7 +69,7 @@ var oauth2 = oauth2(credentials);
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
-        redirect_uri: 'https://hello-world360.herokuapp.com/callback',
+        redirect_uri: 'https://hello-world360.herokuapp.com/getData',
         scope: 'full'
     });
 
@@ -139,6 +139,19 @@ function getJSON(options, onResult){
 
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
+
+    var code = req.query.code;
+
+    oauth2.authCode.getToken({
+        code: code,
+        redirect_uri: 'https://hello-world360.herokuapp.com/getData'
+    }, saveToken);
+
+    function saveToken(error, result) {
+        if (error) { console.log('Access Token Error', error.message); }
+        token = oauth2.accessToken.create(result);
+    }
+    
     getJSON(options,
         function(statusCode, result)
         {
