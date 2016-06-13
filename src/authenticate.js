@@ -100,7 +100,7 @@ app.get('/callback', function (req, res) {
         options = {
 	        host: hostURL,
 	        port: 443,
-	        path: '/services/data/v35.0/analytics/reports//00Oa0000008r7sg',
+	        path: '/services/data/v35.0/analytics/reports/00Oa0000008r7sg',
 	        method: 'GET',
 	        headers: {
 	            'Authorization': 'Bearer ' + token.token.access_token,
@@ -135,6 +135,7 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', (d) => {
+            data = d;
             process.stdout.write(d);
         });
     });
@@ -144,19 +145,10 @@ app.get('/getData', function (req, res) {
         console.log('Error found');
         console.error(e);
     });
-    //res.send(JSON.stringify(data));
 });
 /************************************************/
 
 
-
-
-
-
-
-/**************** show the data *******************/
-
-/**************************************************/
 
 
 
