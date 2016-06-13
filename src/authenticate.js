@@ -63,6 +63,7 @@ var credentials = {
     };
 
 var token;
+var options;
 
 // Initialize the OAuth2 Library
 var oauth2 = oauth2(credentials);
@@ -91,6 +92,18 @@ app.get('/callback', function (req, res) {
         if (error) { console.log('Access Token Error', error.message); }
         token = oauth2.accessToken.create(result);
         console.log('token is: ' + JSON.stringify(token));
+        console.log('populating options');
+        
+        options = {
+	        host: token.instance_url,
+	        port: 443,
+	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
+	        method: 'GET',
+	        headers: {
+	            'Authorization': 'Bearer ' + token.access_token,
+	            'Content-Type': 'application/json'
+	        }
+	    };
     }
 
     res.render('data');
@@ -108,17 +121,6 @@ app.get('/auth', function (req, res) {
 
 
 /*************** For getting data ***************/
-var options = {
-        host: token.instance_url,
-        port: 443,
-        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + token,
-            'Content-Type': 'application/json'
-        }
-    };
-
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
 	console.log('entering getData');
