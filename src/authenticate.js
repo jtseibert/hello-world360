@@ -106,6 +106,8 @@ app.get('/callback', function (req, res) {
 	    };
 
 	    console.log('options: ' + JSON.stringify(options));
+        result = token.token.instance_url.replace(http/.*?:\/\//g, "");
+        console.log(result);
     }
 
     res.render('data');
