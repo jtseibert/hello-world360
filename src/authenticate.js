@@ -124,31 +124,31 @@ app.get('/getData', function (req, res) {
 	console.log('entering getData');
 
 	function getJSON(options, onResult){
-    console.log("entering getJSON");
+	    console.log("entering getJSON");
 
-    var prot = options.port == 443 ? https : http;
-    var req = prot.request(options, function(res)
-    {
-        var output = '';
-        console.log(options.host + ':' + res.statusCode);
-        res.setEncoding('utf8');
+	    var prot = options.port == 443 ? https : http;
+	    var req = prot.request(options, function(res)
+	    {
+	        var output = '';
+	        console.log(options.host + ':' + res.statusCode);
+	        res.setEncoding('utf8');
 
-        res.on('data', function (chunk) {
-            output += chunk;
-        });
+	        res.on('data', function (chunk) {
+	            output += chunk;
+	        });
 
-        res.on('end', function() {
-            var obj = JSON.parse(output);
-            onResult(res.statusCode, obj);
-        });
-    });
+	        res.on('end', function(res) {
+	            var obj = JSON.parse(output);
+	            onResult(res.statusCode, obj);
+	        });
+	    });
 
-    req.on('error', function(err, res) {
-        res.send('error: ' + err.message);
-    });
+	    req.on('error', function(err, res) {
+	        res.send('error: ' + err.message);
+	    });
 
-    req.end();
-};
+	    req.end();
+	};
 
     getJSON(options,
         function(statusCode, result)
