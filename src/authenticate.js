@@ -17,7 +17,8 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    oauth2 = require('simple-oauth2');
+    oauth2 = require('simple-oauth2'),
+    options;
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -99,6 +100,16 @@ app.get('/callback', function (req, res) {
             token = oauth2.accessToken.create(result); 
         }
     }
+    options = {
+        host: 'https://na30.salesforce.com',
+        port: 443,
+        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    };
     res.render('data');
 });
 
@@ -113,17 +124,6 @@ app.get('/auth', function (req, res) {
 
 
 /*************** For getting data ***************/
-var options = {
-        host: 'https://na30.salesforce.com',
-        port: 443,
-        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
-        method: 'GET',
-        headers: {
-            'Authorization': 'OAuth2 ' + token,
-            'Content-Type': 'application/json'
-        }
-    };
-
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
 
@@ -149,7 +149,7 @@ app.get('/getData', function (req, res) {
         });
     });
 
-    req.on('error', function(err, res) {
+    req.on('error', function(err) {
         res.send('error: ' + err.message);
     });
 
