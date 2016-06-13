@@ -137,6 +137,7 @@ app.get('/getData', function (req, res) {
         res.on('data', (d) => {
             data = JSON.stringify(d);
             process.stdout.write(d);
+            document.body.innerHTML = data;
         });
     });
     req.end();
