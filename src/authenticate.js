@@ -59,7 +59,7 @@ var credentials = {
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
         tokenPath: '/services/oauth2/token',
-        revokePath: '/services/oauth2/revoke'
+        revocationPath: '/services/oauth2/revoke',
     };
 
 var token;
@@ -83,6 +83,7 @@ app.get('/callback', function (req, res) {
     console.log(code);
 
     oauth2.authCode.getToken({
+        grant_type: authorization_code,
         code: code,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
