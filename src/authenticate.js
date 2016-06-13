@@ -119,7 +119,7 @@ var options = {
         path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
         method: 'GET',
         headers: {
-            'Authorization': 'OAuth2 ' + token,
+            'Authorization': 'Bearer ' + token,
             'Content-Type': 'application/json'
         }
     };
@@ -149,7 +149,7 @@ app.get('/getData', function (req, res) {
         });
     });
 
-    req.on('error', function(err) {
+    req.on('error', function(err, res) {
         res.send('error: ' + err.message);
     });
 
