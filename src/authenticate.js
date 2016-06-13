@@ -54,8 +54,8 @@ console.log('Express server started on port 5000');
 /* For oauth2 authentication and token handling */
 // Set the configuration settings
 var credentials = {
-        clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
-        clientSecret: '4299800700281945236',
+        clientID: '3MVG9uudbyLbNPZMn2emQiwwmoqmcudnURvLui8uICaepT6Egs.LFsHRMAnD00FSog.OXsLKpODzE.jxi.Ffu',
+        clientSecret: '625133588109438640',
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
         tokenPath: '/services/oauth2/access_token',
@@ -69,12 +69,12 @@ var oauth2 = oauth2(credentials);
 
 // Authorization uri definition
 var authorization_uri = oauth2.authCode.authorizeURL({
-        redirect_uri: 'https://hello-world360.herokuapp.com/callback',
+        redirect_uri: 'https://hello-world360.herokuapp.com/data',
         scope: 'full'
     });
 
 // Callbacks
-app.get('/callback', function (req, res) {
+app.get('/data', function (req, res) {
     var code = req.query.code;
 
     oauth2.authCode.getToken({
