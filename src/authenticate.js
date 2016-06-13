@@ -143,13 +143,13 @@ app.get('/getData', function (req, res) {
 	        });
 	    });
 
-	    req.on('error', function(err, res) {
+	    req.on('error', function(err) {
 	        res.send('error: ' + err.message);
 	    });
 
 	    req.end();
 	};
-
+	//Call *****
     getJSON(options,
         function(statusCode, result)
         {
