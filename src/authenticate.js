@@ -89,6 +89,7 @@ app.get('/callback', function (req, res) {
         if (error) { console.log('Access Token Error: ', error.message); }
         else { 
             console.log('Saving token');
+            console.log(result);
             result.expires_in = 2592000;
             token = oauth2.accessToken.create(result); 
         }
