@@ -87,8 +87,10 @@ app.get('/callback', function (req, res) {
 
     function saveToken(error, result) {
         if (error) { console.log('Access Token Error', error.message); }
+        else { 
             console.log('Saving token');
             token = oauth2.accessToken.create(result); 
+        }
     }
 });
 
