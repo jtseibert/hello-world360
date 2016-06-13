@@ -145,10 +145,19 @@ app.get('/getData', function (req, res) {
         console.log('Error found');
         console.error(e);
     });
+    res.send(JSON.stringify(data));
 });
 /************************************************/
 
 
+
+
+
+
+
+/**************** show the data *******************/
+
+/**************************************************/
 
 
 
