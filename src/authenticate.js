@@ -153,6 +153,26 @@ app.get('/getData', function (req, res) {
 
     console.log('Entered getData');
 
+    var code = req.query.code;
+
+    console.log(code);
+
+    oauth2.authCode.getToken({
+        code: code,
+        client_ID: credentials.clientID,
+        client_Secret: credentials.clientSecret,
+    //     redirect_uri: 'https://hello-world360.herokuapp.com/data'
+    // }, saveToken);
+
+    function saveToken(error, result) {
+        console.log('entered saveToken, result: ' + result);
+        if (error) { console.log('Access Token Error: ', error.message); }
+        else { 
+            console.log('Saving token');
+            token = oauth2.accessToken.create(result); 
+        }
+    }
+
     getJSON(options,
         function(statusCode, result)
         {
