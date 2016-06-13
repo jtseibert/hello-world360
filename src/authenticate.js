@@ -94,16 +94,16 @@ app.get('/callback', function (req, res) {
         console.log('token is: ' + JSON.stringify(token));
         console.log('populating options');
         
-        options = {
-	        host: token.token.instance_url,
-	        port: 443,
-	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
-	        method: 'GET',
-	        headers: {
-	            'Authorization': 'Bearer ' + token.token.access_token,
-	            'Content-Type': 'application/json'
-	        }
-	    };
+     //    options = {
+	    //     host: token.token.instance_url,
+	    //     port: 443,
+	    //     path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
+	    //     method: 'GET',
+	    //     headers: {
+	    //         'Authorization': 'Bearer ' + token.token.access_token,
+	    //         'Content-Type': 'application/json'
+	    //     }
+	    // };
 
 	    console.log(JSON.stringify(options));
     }
@@ -127,6 +127,16 @@ app.get('/auth', function (req, res) {
 app.get('/getData', function (req, res) {
 	console.log('entering getData');
 
+    options = {
+            host: token.token.instance_url,
+            port: 443,
+            path: '/services/data/v37.0/sobjects/',
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + token.token.access_token,
+                'Content-Type': 'application/json'
+            }
+        };
 
     var req = https.request(options, (res) => {
         console.log('statusCode: ', res.statusCode);
