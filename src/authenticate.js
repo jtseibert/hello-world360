@@ -17,7 +17,8 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    oauth2 = require('simple-oauth2');
+    oauth2 = require('simple-oauth2'),
+    options;
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -59,7 +60,6 @@ var credentials = {
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
         tokenPath: '/services/oauth2/token',
-        revokePath: '/services/oauth2/revoke'
     };
 
 var token;
@@ -76,18 +76,33 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 // Callbacks
 app.get('/callback', function (req, res) {
+<<<<<<< HEAD
 	console.log('got to /callback');
+=======
+
+    console.log('Entered Callback');
+
+>>>>>>> 77e27b57a1583d055f2609df841712843c61feef
     var code = req.query.code;
+
+    console.log(code);
 
     oauth2.authCode.getToken({
         code: code,
+<<<<<<< HEAD
         grant_type: 'authorization_uri',
         client_id: credentials.clientID,
         client_secret: credentials.clientSecret,
+=======
+        grant_type: 'authorization_code',
+        client_ID: credentials.clientID,
+        client_Secret: credentials.clientSecret,
+>>>>>>> 77e27b57a1583d055f2609df841712843c61feef
         redirect_uri: 'https://hello-world360.herokuapp.com/callback'
     }, saveToken);
 
     function saveToken(error, result) {
+<<<<<<< HEAD
     	console.log('entering saveToken');
         if (error) { console.log('Access Token Error', error.message); }
         token = oauth2.accessToken.create(result);
@@ -108,6 +123,26 @@ app.get('/callback', function (req, res) {
 	    console.log(JSON.stringify(options));
     }
 
+=======
+        console.log(JSON.stringify(result));
+        if (error) { console.log('Access Token Error: ', error.message); }
+        else { 
+            console.log('Saving token');
+            // result.expires_in = 2592000;
+            token = oauth2.accessToken.create(result); 
+        }
+    }
+    options = {
+        host: 'https://na30.salesforce.com',
+        port: 443,
+        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+        }
+    };
+>>>>>>> 77e27b57a1583d055f2609df841712843c61feef
     res.render('data');
 });
 
@@ -125,6 +160,7 @@ app.get('/auth', function (req, res) {
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
+<<<<<<< HEAD
 	console.log('entering getData');
 
 	function getJSON(options, onResult){
@@ -154,6 +190,38 @@ app.get('/getData', function (req, res) {
 	    req.end();
 	};
 	//Call *****
+=======
+
+    console.log('Entered getData');
+
+    function getJSON(options, onResult){
+    console.log("rest::getJSON");
+
+    var prot = options.port == 443 ? https : http;
+    var req = prot.request(options, function(res)
+    {
+        var output = '';
+        console.log(options.host + ':' + res.statusCode);
+        res.setEncoding('utf8');
+
+        res.on('data', function (chunk) {
+            output += chunk;
+        });
+
+        res.on('end', function(res) {
+            var obj = JSON.parse(output);
+            onResult(res.statusCode, obj);
+        });
+    });
+
+    req.on('error', function(err) {
+        res.send('error: ' + err.message);
+    });
+
+    req.end();
+};
+
+>>>>>>> 77e27b57a1583d055f2609df841712843c61feef
     getJSON(options,
         function(statusCode, result)
         {
