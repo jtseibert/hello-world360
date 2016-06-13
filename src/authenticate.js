@@ -82,7 +82,7 @@ app.get('/callback', function (req, res) {
 
     oauth2.authCode.getToken({
         code: code,
-        redirect_uri: 'https://hello-world360.herokuapp.com/getData'
+        redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
 
     function saveToken(error, result) {
