@@ -122,7 +122,7 @@ app.get('/auth', function (req, res) {
 /************************************************/
 
 
-
+var data;
 
 
 /*************** For getting data ***************/
@@ -135,6 +135,7 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', (d) => {
+            data = d;
             process.stdout.write(d);
         });
     });
@@ -144,43 +145,6 @@ app.get('/getData', function (req, res) {
         console.log('Error found');
         console.error(e);
     });
-
-
-	// function getJSON(options, onResult){
-	//     console.log("entering getJSON");
-
-	//     var prot = options.port == 443 ? https : http;
-	//     var req = prot.request(options, function(res)
-	//     {
-	//         var output = '';
-	//         console.log(options.host + ':' + res.statusCode);
-	//         res.setEncoding('utf8');
-
-	//         res.on('data', function (chunk) {
-	//             output += chunk;
-	//         });
-
-	//         res.on('end', function(res) {
-	//             var obj = JSON.parse(output);
-	//             onResult(res.statusCode, obj);
-	//         });
-	//     });
-
-	//     req.on('error', function(err) {
-	//         res.send('error: ' + err.message);
-	//     });
-
-	//     req.end();
-	// };
-	// //Call *****
- //    getJSON(options,
- //        function(statusCode, result)
- //        {
- //            // I could work with the result html/json here.  I could also just return it
- //            console.log("onResult: (" + statusCode + ")" + JSON.stringify(result));
- //            res.statusCode = statusCode;
- //            res.send(result);
- //        });
 });
 /************************************************/
 
