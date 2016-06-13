@@ -87,6 +87,7 @@ app.get('/data', function (req, res) {
     }, saveToken);
 
     function saveToken(error, result) {
+    	console.log('entering saveToken');
         if (error) { console.log('Access Token Error', error.message); }
         token = oauth2.accessToken.create(result);
         console.log('token is: ' + token);
@@ -95,6 +96,7 @@ app.get('/data', function (req, res) {
 
 // Initial page redirecting to Salesforce
 app.get('/auth', function (req, res) {
+	console.log('entering /auth, calling res.redirect(authorization_uri');
     res.redirect(authorization_uri);
 });
 /************************************************/
@@ -116,7 +118,7 @@ var options = {
     };
 
 function getJSON(options, onResult){
-    console.log("rest::getJSON");
+    console.log("entering getJSON");
 
     var prot = options.port == 443 ? https : http;
     var req = prot.request(options, function(res)
@@ -144,6 +146,7 @@ function getJSON(options, onResult){
 
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
+	console.log('entering getData');
     getJSON(options,
         function(statusCode, result)
         {
