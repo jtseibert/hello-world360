@@ -83,7 +83,7 @@ app.get('/callback', function (req, res) {
         grant_type: 'authorization_uri',
         client_id: credentials.clientID,
         client_secret: credentials.clientSecret,
-        redirect_uri: 'https://hello-world360.herokuapp.com/data'
+        redirect_uri: 'https://hello-world360.herokuapp.com/callback'
     }, saveToken);
 
     function saveToken(error, result) {
@@ -92,6 +92,8 @@ app.get('/callback', function (req, res) {
         token = oauth2.accessToken.create(result);
         console.log('token is: ' + JSON.stringify(token));
     }
+
+    res.render('data');
 });
 
 // Initial page redirecting to Salesforce
