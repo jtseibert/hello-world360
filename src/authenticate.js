@@ -75,6 +75,7 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 // Callbacks
 app.get('/data', function (req, res) {
+	console.log('got to /data');
     var code = req.query.code;
 
     oauth2.authCode.getToken({
