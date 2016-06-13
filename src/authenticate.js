@@ -85,11 +85,13 @@ app.get('/callback', function (req, res) {
     oauth2.authCode.getToken({
         grant_type: 'authorization_code',
         code: code,
+        client_ID: credentials.clientID,
+        client_Secret: credentials.clientSecret,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
     }, saveToken);
 
     function saveToken(error, result) {
-        console.log(result);
+        console.log('entered saveToken, result: ' + result);
         if (error) { console.log('Access Token Error: ', error.message); }
         else { 
             console.log('Saving token');
