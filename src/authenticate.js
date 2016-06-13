@@ -63,7 +63,8 @@ var credentials = {
     };
 
 var token;
-var options;
+var options,
+    hostURL;
 
 // Initialize the OAuth2 Library
 var oauth2 = oauth2(credentials);
@@ -106,8 +107,8 @@ app.get('/callback', function (req, res) {
 	    };
 
 	    console.log('options: ' + JSON.stringify(options));
-        result = token.token.instance_url.replace(http/.*?:\/\//g, "");
-        console.log(result);
+        hostURL = token.token.instance_url.replace('h''t''p''s'':''//', "");
+        console.log(hostURL);
     }
 
     res.render('data');
