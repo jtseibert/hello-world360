@@ -95,7 +95,7 @@ app.get('/callback', function (req, res) {
         console.log('populating options');
         
         options = {
-	        host: token.token.instance_url,
+	        host: 'na30.salesforce.com',
 	        port: 443,
 	        path: '/services/data/v37.0/sobjects/',
 	        method: 'GET',
