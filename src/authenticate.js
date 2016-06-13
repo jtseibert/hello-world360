@@ -122,6 +122,7 @@ app.get('/auth', function (req, res) {
 /************************************************/
 
 
+var data;
 
 
 /*************** For getting data ***************/
@@ -134,7 +135,8 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', (d) => {
-            res.send(JSON.stringify(d));
+            data = JSON.stringify(d);
+            process.stdout.write(d);
         });
     });
     req.end();
@@ -143,6 +145,7 @@ app.get('/getData', function (req, res) {
         console.log('Error found');
         console.error(e);
     });
+    res.send(data);
 });
 /************************************************/
 
