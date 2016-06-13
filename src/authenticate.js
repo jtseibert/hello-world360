@@ -94,8 +94,6 @@ app.get('/callback', function (req, res) {
         console.log('token is: ' + JSON.stringify(token));
         console.log('populating options');
         
-        var parsedToken = JSON.parse(token);
-
         options = {
 	        host: 'this is a host test',
 	        port: 443,
