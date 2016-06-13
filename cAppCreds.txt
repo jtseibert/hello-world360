@@ -1,0 +1,4 @@
+s.tan app
+client_id: 3MVG9uudbyLbNPZMn2emQiwwmoqmcudnURvLui8uICaepT6Egs.LFsHRMAnD00FSog.OXsLKpODzE.jxi.Ffu
+
+client_secret: 625133588109438640
