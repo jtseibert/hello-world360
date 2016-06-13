@@ -139,14 +139,16 @@ app.get('/getData', function (req, res) {
             process.stdout.write(d);
         });
     });
+
+    console.log(data);
+    res.send(data);
+
     req.end();
 
     req.on('error', (e) => {
         console.log('Error found');
         console.error(e);
     });
-    console.log(data);
-    res.send(data);
 });
 /************************************************/
 
