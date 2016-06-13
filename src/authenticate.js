@@ -83,14 +83,14 @@ app.get('/callback', function (req, res) {
     oauth2.authCode.getToken({
         code: code,
         redirect_uri: 'https://hello-world360.herokuapp.com/data'
-    }, saveToken(req.error,req.result));
+    }, saveToken;
 
     function saveToken(error, result) {
         if (error) { console.log('Access Token Error: ', error.message); }
         else { 
             console.log('Saving token');
             console.log(result);
-            result.expires_in = 2592000;
+            // result.expires_in = 2592000;
             token = oauth2.accessToken.create(result); 
         }
     }
