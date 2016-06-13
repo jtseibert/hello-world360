@@ -97,12 +97,12 @@ app.get('/callback', function (req, res) {
         var parsedToken = JSON.parse(token);
 
         options = {
-	        host: parsedToken['instance_url'],
+	        host: 'this is a host test',
 	        port: 443,
 	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
 	        method: 'GET',
 	        headers: {
-	            'Authorization': 'Bearer ' + parsedToken['access_token'],
+	            'Authorization': 'Bearer ' + 'this is a token test',
 	            'Content-Type': 'application/json'
 	        }
 	    };
