@@ -95,12 +95,12 @@ app.get('/callback', function (req, res) {
         console.log('populating options');
         
         options = {
-	        host: token['instance_url'],
+	        host: JSON.stringify(token['instance_url']),
 	        port: 443,
 	        path: '/services/data/v36.0/analytics/reports/00O36000005vYLW/describe',
 	        method: 'GET',
 	        headers: {
-	            'Authorization': 'Bearer ' + token['access_token'],
+	            'Authorization': 'Bearer ' + JSON.stringify(token['access_token']),
 	            'Content-Type': 'application/json'
 	        }
 	    };
