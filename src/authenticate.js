@@ -58,7 +58,7 @@ var credentials = {
         clientSecret: '625133588109438640',
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
-        tokenPath: '/services/oauth2/access_token',
+        tokenPath: '/services/oauth2/token',
         revokePath: '/services/oauth2/revoke'
     };
 
