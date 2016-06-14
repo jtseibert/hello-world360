@@ -18,7 +18,7 @@ var express = require('express'),
     https = require('https'),
     http = require('http'),
     oauth2 = require('simple-oauth2')
-    $ = require('jquery')();
+    $ = require('jquery')(this);
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
