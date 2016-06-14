@@ -137,7 +137,7 @@ app.get('/getData', function (req, res) {
 
         res.on('data', function(d){
             process.stdout.write(d);
-            data = new JSONAPIDeserializer().deserialize(d);
+            data = new JSONAPIDeserializer('data').deserialize(d);
         });
     });
 
