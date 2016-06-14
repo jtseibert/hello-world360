@@ -133,6 +133,7 @@ var data;
 app.get('/getData', function (req, res) {
     console.log('entering getData');
 
+    res.setEncoding('utf8');
     var req = https.request(options, function(res){
         console.log('statusCode: ', res.statusCode);
         console.log('headers: ', res.headers);
@@ -140,7 +141,7 @@ app.get('/getData', function (req, res) {
         res.on('data', function(d){
             process.stdout.write(d);
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
-            data = JSON.parse(d.toString());
+            data = JSON.parse(JSON.stringify(d));
         });
     });
 
