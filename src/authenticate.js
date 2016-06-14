@@ -149,7 +149,7 @@ app.get('/getData', function (req, res) {
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
         console.log(data);
-        res.send(data);
+        res.send(JSON.stringify(data, null, 4));
     }
     
     
