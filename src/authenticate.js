@@ -137,13 +137,14 @@ app.get('/getData', function (req, res) {
             console.error(e);
         });
 
-        res.on('end', function(res) {
+        res.on('finish', function(res) {
             console.log('ENTER IF DATA, PRINTING DATA');
             data = JSON.parse(data.toString('utf-8'));
             console.log(data.factMap["T!T"].aggregates[0].label);
         });      
-    }).then(res.send(data.factMap["T!T"].aggregates[0].label));
+    })
     req.end();
+    res.send(data.factMap["T!T"].aggregates[0].label);
     
 });
 /************************************************/
