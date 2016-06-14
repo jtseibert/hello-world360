@@ -120,14 +120,16 @@ app.get('/auth', function (req, res) {
 /************************************************/
 
 
-var data = "";
-var label = "hi"
+
 
 
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function(req, res) {
     var req = https.request(options, function(res){
+        var data = "";
+        var label = "hi"
+        
         res.on('data', function(d){
             data += d;
         });
