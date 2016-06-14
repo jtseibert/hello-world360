@@ -143,12 +143,14 @@ app.get('/getData', function (req, res) {
             console.log('D.TOSTRING call');
             console.log(d.toString('utf-8'));
             console.log('END CALL TO TOSTRING');
+            data += data + d.toString('utf-8');
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
     });
 
     if (data){
+        console.log('ENTER IF DATA, PRINTING DATA');
         console.log(data);
         res.send(data);
     }
