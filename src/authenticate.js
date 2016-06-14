@@ -17,7 +17,8 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    oauth2 = require('simple-oauth2');
+    oauth2 = require('simple-oauth2')
+    $ = require('jquery')();
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -130,27 +131,39 @@ var data;
 app.get('/getData', function (req, res) {
     console.log('entering getData');
 
-    var req = https.request(options, function(res){
-        console.log('statusCode: ', res.statusCode);
-        console.log('headers: ', res.headers);
+    $.ajax({
+        type: 'GET',
+        url: options.host + options.path,
+        data: data,
+        async: false,
+        headers: options.headers,
+        dataType: 'json',
+        success: function (data) {
+            console.log('success');
+        }
+});
 
-        res.on('data', function(d){
-            process.stdout.write(d);
-            data = JSON.parse(JSON.stringify(d));
-        });
-    });
+    // var req = https.request(options, function(res){
+    //     console.log('statusCode: ', res.statusCode);
+    //     console.log('headers: ', res.headers);
 
-    if (data){
-        console.log(data);
-        res.send(data);
-    }
+    //     res.on('data', function(d){
+    //         process.stdout.write(d);
+    //         data = JSON.parse(JSON.stringify(d));
+    //     });
+    // });
 
-    req.end();
+    // if (data){
+    //     console.log(data);
+    //     res.send(data);
+    // }
 
-    req.on('error', (e) => {
-        console.log('Error found');
-        console.error(e);
-    });
+    // req.end();
+
+    // req.on('error', (e) => {
+    //     console.log('Error found');
+    //     console.error(e);
+    // });
 });
 /************************************************/
 
