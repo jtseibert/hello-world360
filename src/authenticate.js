@@ -126,16 +126,7 @@ var label = "hi"
 
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
-app.get('/getData', function(req, res){
-    async.series([
-        function(callback){
-            httpsRequest(req, res, callback),
-        }
-        function(req, res, label, callback){
-            res.send(label);            
-        }
-    ]);
-});
+app.get('/getData', httpsRequest(req, res));
 /************************************************/
 
 
@@ -164,7 +155,6 @@ function httpsRequest(req, res) {
         });      
     })
     req.end();
-    callback(null,label);
 }
 
 
