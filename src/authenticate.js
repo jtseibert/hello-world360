@@ -145,9 +145,9 @@ app.get('/getData', function (req, res) {
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
-        data = data.factMap;
+        var factMap = data.factMap;
         console.log(data);
-        res.send(JSON.stringify(data, null, 4));
+        res.send(factMap.T_T.aggregates.value);
     }
     
     
