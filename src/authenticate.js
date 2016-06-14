@@ -121,42 +121,33 @@ app.get('/auth', function (req, res) {
 
 
 var data = "";
-var label = "hi"
+var label
 
 
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    async.waterfall([
-        function(callback) {
-            var req = https.request(options, function(res){
-                res.on('data', function(d){
-                    data += d;
-                });
 
-                res.on('error', (e) => {
-                    console.log('Error found');
-                    console.error(e);
-                });
+    var req = https.request(options, function(res){
+        res.on('data', function(d){
+            data += d;
+        });
 
-                res.on('end', function(res) {
-                    console.log('ENTER IF DATA, PRINTING DATA');
-                    data = JSON.parse(data.toString('utf-8'));
-                    console.log(data.factMap["T!T"].aggregates[0].label);
-                    label = data.factMap["T!T"].aggregates[0].label
-                    console.log('label: ' + label)
-                    req.end()
-                });      
-            })
-            callback(null,label)
-        },
-        function(arg1,callback){
+        res.on('error', (e) => {
+            console.log('Error found');
+            console.error(e);
+        });
+
+        res.on('end', function(err, res) {
+            console.log('ENTER IF DATA, PRINTING DATA');
+            data = JSON.parse(data.toString('utf-8'));
+            console.log(data.factMap["T!T"].aggregates[0].label);
+            label = data.factMap["T!T"].aggregates[0].label
+            console.log('label: ' + label)
             res.send(label)
-            callback(null, 'done')
-        }
-    ], function (err, result) {
-        // result now equals done
-    })    
+        });      
+    })
+    req.end();
 });
 /************************************************/
 
