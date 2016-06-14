@@ -18,7 +18,7 @@ var express = require('express'),
     https = require('https'),
     http = require('http'),
     oauth2 = require('simple-oauth2'),
-    $ = require('jquery');
+    jquery = require('jquery');
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -123,15 +123,15 @@ app.get('/auth', function (req, res) {
 /************************************************/
 
 
-var authHeader;
+var data;
 
 
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    $.ajax({
-         url: options.host + options.path,
-         data: { signature: authHeader },
+    jquery.$.ajax({
+         url: (options.host + options.path),
+         data: data,
          type: "GET",
          beforeSend: function(xhr){xhr.setRequestHeader(options.headers);},
          success: function() { alert('Success!' + authHeader); }
