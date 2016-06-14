@@ -143,10 +143,10 @@ app.get('/getData', function (req, res) {
         });
     });
 
-    /*if (data){
+    if (data){
         console.log(data);
         res.send(data);
-    }*/
+    }
 
     req.end();
 
