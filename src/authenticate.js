@@ -123,7 +123,7 @@ app.get('/auth', function (req, res) {
 /************************************************/
 
 
-var data;
+var authHeader;
 
 
 /*************** For getting data ***************/
