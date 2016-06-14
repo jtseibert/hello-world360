@@ -142,8 +142,8 @@ app.get('/getData', function (req, res) {
             data = JSON.parse(data.toString('utf-8'));
             console.log(data.factMap["T!T"].aggregates[0].label);
         });      
-    })
-    req.end().then(res.send(data.factMap["T!T"].aggregates[0].label));
+    }).then(res.send(data.factMap["T!T"].aggregates[0].label));
+    req.end();
     
 });
 /************************************************/
