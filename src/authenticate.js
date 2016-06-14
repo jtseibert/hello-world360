@@ -17,8 +17,7 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    oauth2 = require('simple-oauth2'),
-    JSONAPIDeserializer = require('jsonapi-serializer').Deserializer;
+    oauth2 = require('simple-oauth2');
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -137,7 +136,7 @@ app.get('/getData', function (req, res) {
 
         res.on('data', function(d){
             process.stdout.write(d);
-            data = new JSONAPIDeserializer('data').deserialize(d, function (err, users) {});
+            data = JSON.parse(JSON.stringify(d));
         });
     });
 
