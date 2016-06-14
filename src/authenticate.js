@@ -126,7 +126,22 @@ var label = "hi"
 
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
-app.get('/getData', function (req, res) {
+app.get('/getData', function(req, res){
+    async.series([
+        httpsRequest(req, res),
+        function(req,res){
+            res.send(label)            
+        }
+    ]);
+});
+/************************************************/
+
+
+
+
+
+
+function httpsRequest(req, res) {
 
     var req = https.request(options, function(res){
         res.on('data', function(d){
@@ -144,19 +159,10 @@ app.get('/getData', function (req, res) {
             console.log(data.factMap["T!T"].aggregates[0].label);
             label = data.factMap["T!T"].aggregates[0].label
             console.log('label: ' + label)
-            res.send(label)
         });      
     })
     req.end();
-});
-/************************************************/
-
-
-
-
-
-
-
+}
 
 
 
