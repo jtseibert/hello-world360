@@ -136,7 +136,7 @@ app.get('/getData', function (req, res) {
 
         res.on('data', function(d){
             process.stdout.write(d);
-            data = JSON.parse(d);
+            data = JSON.parse(JSON.stringify(d));
         });
     });
 
