@@ -138,10 +138,7 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', function(d){
-           // process.stdout.write(d);
             data += d;
-            //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
-            //data = JSON.parse(JSON.stringify(d));
         });
     });
 
