@@ -18,7 +18,9 @@ var express = require('express'),
     https = require('https'),
     http = require('http'),
     oauth2 = require('simple-oauth2')
-    $ = require('jquery')(this);
+    $ = require('jquery')(this),
+    bufferJson = require('buffer-json');
+
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -137,14 +139,14 @@ app.get('/getData', function (req, res) {
 
         res.on('data', function(d){
             process.stdout.write(d);
-            data = JSON.parse(JSON.stringify(d));
+            data = JSON.stringify(new Buffer('d'), bufferJson.replacer)
         });
     });
 
-    if (data){
+    /*if (data){
         console.log(data);
         res.send(data);
-    }
+    }*/
 
     req.end();
 
