@@ -145,8 +145,8 @@ app.get('/getData', function (req, res) {
         });      
     })
 
-    res.send(data.factMap["T!T"].aggregates[0].label);
     req.end();   
+    res.send(data.factMap["T!T"].aggregates[0].label);
 });
 /************************************************/
 
