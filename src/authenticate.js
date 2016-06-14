@@ -128,8 +128,10 @@ var label = "hi"
 // Redirect to pull data from Salesforce
 app.get('/getData', function(req, res){
     async.series([
-        httpsRequest(req, res),
-        function(req,res){
+        function(callback){
+            httpsRequest(req, res, callback),
+        }
+        function(req, res, label, callback){
             res.send(label);            
         }
     ]);
@@ -162,6 +164,7 @@ function httpsRequest(req, res) {
         });      
     })
     req.end();
+    callback(null,label);
 }
 
 
