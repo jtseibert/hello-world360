@@ -126,7 +126,7 @@ var data = "";
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-
+    console.log('entered getData');
     var req = https.request(options, function(res){
         res.on('data', function(d){
             data += d;
