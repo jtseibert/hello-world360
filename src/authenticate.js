@@ -146,7 +146,7 @@ app.get('/getData', function(req, res) {
         });      
     })
     req.end()
-    res.render('/data')
+    res.render('data')
 });
 /************************************************/
 
