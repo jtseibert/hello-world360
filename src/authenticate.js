@@ -18,7 +18,7 @@ var express = require('express'),
     https = require('https'),
     http = require('http'),
     oauth2 = require('simple-oauth2')
-    $ = require('jquery')(this),
+   // $ = require('jquery')(this),
     bufferJson = require('buffer-json');
 
 
