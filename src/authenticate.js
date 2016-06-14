@@ -145,6 +145,10 @@ app.get('/getData', function (req, res) {
             console.log(data.factMap["T!T"].aggregates[0].label);
         });      
     })
+
+    res.on('end', function {
+        res.render('data');
+    })
 });
 /************************************************/
 
