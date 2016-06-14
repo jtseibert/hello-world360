@@ -145,9 +145,7 @@ app.get('/getData', function(req, res) {
             console.log('label: ' + label)
         });      
     })
-    req.end(function(res){
-        res.send(label);
-    });
+    req.end()
 });
 /************************************************/
 
