@@ -130,11 +130,11 @@ var data;
 app.get('/getData', function (req, res) {
 	console.log('entering getData');
 
-    var req = https.request(options, (res) => {
+    var req = https.request(options, function(res){
         console.log('statusCode: ', res.statusCode);
         console.log('headers: ', res.headers);
 
-        res.on('data', (d) => {
+        res.on('data', function(d){
             process.stdout.write(d);
         });
     });
