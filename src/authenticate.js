@@ -147,7 +147,7 @@ app.get('/getData', function (req, res) {
         data = JSON.parse(data.toString('utf-8'));
         var factMap = data.factMap;
         //console.log(data);
-        var test = 'T!T';
+        var test = "'T!T'";
         res.send(factMap.test.aggregates.value);
     }
     
