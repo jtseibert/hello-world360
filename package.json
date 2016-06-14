@@ -17,13 +17,14 @@
   },
   "homepage": "https://github.com/jtseibert/hello-world360#readme",
   "dependencies": {
-    "express": "4.13.4",
-    "simple-oauth2": "0.7.0",
-    "ejs": "2.4.2",
-    "https": "1.0.0",
-    "http": "0.0.0",
+    "async": "2.0.0-rc.6",
     "buffer-json": "1.0.0",
-    "async": "2.0.0-rc.6"
+    "ejs": "2.4.2",
+    "express": "4.13.4",
+    "http": "0.0.0",
+    "https": "1.0.0",
+    "pg": "5.1.0",
+    "simple-oauth2": "0.7.0"
   },
   "devDependencies": {},
   "description": ""
