@@ -131,19 +131,19 @@ app.get('/getData', function (req, res) {
         res.on('data', function(d){
             data += d;
         });
-    });    
-    req.end();
-    req.on('error', (e) => {
-        console.log('Error found');
-        console.error(e);
-    });
 
-    req.on('end', function() {
-        console.log('ENTER IF DATA, PRINTING DATA');
-        data = JSON.parse(data.toString('utf-8'));
-        var factMap = data.factMap;
-        res.send(data.factMap["T!T"].aggregates[0].label);
-        console.log(data.factMap["T!T"].aggregates[0].label);
+        req.on('error', (e) => {
+            console.log('Error found');
+            console.error(e);
+        });
+
+        req.on('end', function() {
+            console.log('ENTER IF DATA, PRINTING DATA');
+            data = JSON.parse(data.toString('utf-8'));
+            var factMap = data.factMap;
+            res.send(data.factMap["T!T"].aggregates[0].label);
+            console.log(data.factMap["T!T"].aggregates[0].label);
+        });      
     })
 });
 /************************************************/
