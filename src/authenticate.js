@@ -140,8 +140,10 @@ app.get('/getData', function (req, res) {
         });
     });
 
-    console.log(data);
-    res.send(data);
+    if (data){
+        console.log(data);
+        res.send(data);
+    }
 
     req.end();
 
