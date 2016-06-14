@@ -80,7 +80,6 @@ var authorization_uri = oauth2.authCode.authorizeURL({
 
 // Callbacks
 app.get('/callback', function (req, res) {
-	console.log('got to /callback');
     var code = req.query.code;
 
     oauth2.authCode.getToken({
@@ -129,7 +128,7 @@ app.get('/getData', function(req, res) {
     var req = https.request(options, function(res){
         var data = "";
         var label = "hi"
-        
+
         res.on('data', function(d){
             data += d;
         });
