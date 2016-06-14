@@ -138,12 +138,8 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', function(d){
-            process.stdout.write(d);
-            console.log('TESTING IF D IS BUFFER: ' + Buffer.isBuffer(d));
-            console.log('D.TOSTRING call');
-            console.log(d.toString('utf-8'));
-            console.log('END CALL TO TOSTRING');
-            data += d.toString('utf-8');
+           // process.stdout.write(d);
+            data += d;
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
@@ -151,7 +147,7 @@ app.get('/getData', function (req, res) {
 
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
-        data = JSON.parse(data);
+        data = JSON.parse(data.toString('utf-8'));
         console.log(data);
         res.send(data);
     }
