@@ -129,7 +129,7 @@ var data;
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    jquery.ajax({
+    jquery.jQuery.ajax({
          url: (options.host + options.path),
          data: data,
          type: "GET",
