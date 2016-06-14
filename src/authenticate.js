@@ -121,6 +121,7 @@ app.get('/auth', function (req, res) {
 
 
 var data = "";
+var label;
 
 
 /*************** For getting data ***************/
@@ -137,14 +138,16 @@ app.get('/getData', function (req, res) {
             console.error(e);
         });
 
-        res.on('finish', function(res) {
+        res.on('end', function(res) {
             console.log('ENTER IF DATA, PRINTING DATA');
             data = JSON.parse(data.toString('utf-8'));
             console.log(data.factMap["T!T"].aggregates[0].label);
+            label = data.factMap["T!T"].aggregates[0].label
+            console.log('label: ' + label)
         });      
     })
     req.end();
-    res.send(data.factMap["T!T"].aggregates[0].label);
+    res.send(label);
     
 });
 /************************************************/
