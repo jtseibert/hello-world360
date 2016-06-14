@@ -18,7 +18,8 @@ var express = require('express'),
     https = require('https'),
     http = require('http'),
     oauth2 = require('simple-oauth2'),
-    jquery = require('jquery');
+    jquery = require('jquery'),
+    $ = jquery();
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -129,7 +130,7 @@ var data;
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    jquery.jQuery.ajax({
+    $.ajax({
          url: (options.host + options.path),
          data: data,
          type: "GET",
