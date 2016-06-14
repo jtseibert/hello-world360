@@ -127,14 +127,14 @@ var label = "hi"
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function(req, res){
-    async.series([
-        function(callback){
-            httpsRequest(req, res, callback),
-        }
-        function(req, res, label, callback){
-            res.send(label);            
-        }
-    ]);
+    // async.series([
+    //     function(callback){
+    //         httpsRequest(req, res, callback),
+    //     }
+    //     function(req, res, label, callback){
+    //         res.send(label);            
+    //     }
+    // ]);
 });
 /************************************************/
 
@@ -143,29 +143,29 @@ app.get('/getData', function(req, res){
 
 
 
-function httpsRequest(req, res) {
+// function httpsRequest(req, res) {
 
-    var req = https.request(options, function(res){
-        res.on('data', function(d){
-            data += d;
-        });
+//     var req = https.request(options, function(res){
+//         res.on('data', function(d){
+//             data += d;
+//         });
 
-        res.on('error', (e) => {
-            console.log('Error found');
-            console.error(e);
-        });
+//         res.on('error', (e) => {
+//             console.log('Error found');
+//             console.error(e);
+//         });
 
-        res.on('end', function(err, res) {
-            console.log('ENTER IF DATA, PRINTING DATA');
-            data = JSON.parse(data.toString('utf-8'));
-            console.log(data.factMap["T!T"].aggregates[0].label);
-            label = data.factMap["T!T"].aggregates[0].label
-            console.log('label: ' + label)
-        });      
-    })
-    req.end();
-    callback(null,label);
-}
+//         res.on('end', function(err, res) {
+//             console.log('ENTER IF DATA, PRINTING DATA');
+//             data = JSON.parse(data.toString('utf-8'));
+//             console.log(data.factMap["T!T"].aggregates[0].label);
+//             label = data.factMap["T!T"].aggregates[0].label
+//             console.log('label: ' + label)
+//         });      
+//     })
+//     req.end();
+//     callback(null,label);
+// }
 
 
 
