@@ -133,7 +133,6 @@ var data;
 app.get('/getData', function (req, res) {
     console.log('entering getData');
 
-    res.setEncoding('utf8');
     var req = https.request(options, function(res){
         console.log('statusCode: ', res.statusCode);
         console.log('headers: ', res.headers);
@@ -149,7 +148,8 @@ app.get('/getData', function (req, res) {
         console.log(data);
         res.send(data);
     }
-
+    
+    req.write('data\n');
     req.end();
 
     req.on('error', (e) => {
