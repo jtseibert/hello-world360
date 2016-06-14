@@ -151,6 +151,7 @@ app.get('/getData', function (req, res) {
 
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
+        data = JSON.stringify(JSON.parse(data), null, 4);
         console.log(data);
         res.send(data);
     }
