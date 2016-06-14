@@ -136,19 +136,16 @@ app.get('/getData', function (req, res) {
             console.log('Error found');
             console.error(e);
         });
-
-        res.on('end', function() {
-            console.log('ENTER IF DATA, PRINTING DATA');
-            data = JSON.parse(data.toString('utf-8'));
-            var factMap = data.factMap;
-            res.send(data.factMap["T!T"].aggregates[0].label);
-            console.log(data.factMap["T!T"].aggregates[0].label);
-        });      
     })
 
     res.on('end', function() {
+        console.log('ENTER IF DATA, PRINTING DATA');
+        data = JSON.parse(data.toString('utf-8'));
+        var factMap = data.factMap;
+        res.send(data.factMap["T!T"].aggregates[0].label);
+        console.log(data.factMap["T!T"].aggregates[0].label);
         res.render('data');
-    })
+    });      
 });
 /************************************************/
 
