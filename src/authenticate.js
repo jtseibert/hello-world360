@@ -148,7 +148,7 @@ app.get('/getData', function (req, res) {
         var factMap = data.factMap;
         //console.log(data);
         //var test = "'T!T'";
-        console.log(factMap.T!T.aggregates.value);
+        res.send(factMap["T!T"].aggregates.value);
     }
     
     
