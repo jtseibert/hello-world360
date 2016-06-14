@@ -128,12 +128,17 @@ var data = "";
 app.get('/getData', function (req, res) {
 
     var req = https.request(options, function(res){
-
         res.on('data', function(d){
             data += d;
         });
+    });    
+    req.end();
+    req.on('error', (e) => {
+        console.log('Error found');
+        console.error(e);
     });
 
+    
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
@@ -141,14 +146,6 @@ app.get('/getData', function (req, res) {
         res.send(data.factMap["T!T"].aggregates[0].label);
         console.log(data.factMap["T!T"].aggregates[0].label);
     }
-    
-    
-    req.end();
-
-    req.on('error', (e) => {
-        console.log('Error found');
-        console.error(e);
-    });
 });
 /************************************************/
 
