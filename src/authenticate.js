@@ -95,8 +95,8 @@ app.get('/callback', function (req, res) {
     	console.log('entering saveToken');
         if (error) { console.log('Access Token Error', error.message); }
         token = oauth2.accessToken.create(result);
-        console.log('token is: ' + JSON.stringify(token));
-        console.log('populating options');
+        //console.log('token is: ' + JSON.stringify(token));
+        //console.log('populating options');
         
         hostURL = token.token.instance_url.replace('https://', '');
 
@@ -111,7 +111,7 @@ app.get('/callback', function (req, res) {
 	        }
 	    };
 
-	    console.log('options: ' + JSON.stringify(options));
+	    //console.log('options: ' + JSON.stringify(options));
     }
 
     res.render('data');
@@ -119,7 +119,7 @@ app.get('/callback', function (req, res) {
 
 // Initial page redirecting to Salesforce
 app.get('/auth', function (req, res) {
-	console.log('entering /auth, calling res.redirect(authorization_uri');
+	//console.log('entering /auth, calling res.redirect(authorization_uri');
     res.redirect(authorization_uri);
 });
 /************************************************/
@@ -131,11 +131,11 @@ var data = "";
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    console.log('entering getData');
+    //console.log('entering getData');
 
     var req = https.request(options, function(res){
-        console.log('statusCode: ', res.statusCode);
-        console.log('headers: ', res.headers);
+        //console.log('statusCode: ', res.statusCode);
+        //console.log('headers: ', res.headers);
 
         res.on('data', function(d){
             data += d;
@@ -146,7 +146,7 @@ app.get('/getData', function (req, res) {
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
         var factMap = data.factMap;
-        console.log(data);
+        //console.log(data);
         res.send(factMap.T_T.aggregates.value);
     }
     
