@@ -131,39 +131,27 @@ var data;
 app.get('/getData', function (req, res) {
     console.log('entering getData');
 
-    $.ajax({
-        type: 'GET',
-        url: options.host + options.path,
-        data: data,
-        async: false,
-        headers: options.headers,
-        dataType: 'json',
-        success: function (data) {
-            console.log('success');
-        }
+    var req = https.request(options, function(res){
+        console.log('statusCode: ', res.statusCode);
+        console.log('headers: ', res.headers);
+
+        res.on('data', function(d){
+            process.stdout.write(d);
+            data = JSON.parse(JSON.stringify(d));
+        });
     });
 
-    // var req = https.request(options, function(res){
-    //     console.log('statusCode: ', res.statusCode);
-    //     console.log('headers: ', res.headers);
+    if (data){
+        console.log(data);
+        res.send(data);
+    }
 
-    //     res.on('data', function(d){
-    //         process.stdout.write(d);
-    //         data = JSON.parse(JSON.stringify(d));
-    //     });
-    // });
+    req.end();
 
-    // if (data){
-    //     console.log(data);
-    //     res.send(data);
-    // }
-
-    // req.end();
-
-    // req.on('error', (e) => {
-    //     console.log('Error found');
-    //     console.error(e);
-    // });
+    req.on('error', (e) => {
+        console.log('Error found');
+        console.error(e);
+    });
 });
 /************************************************/
 
