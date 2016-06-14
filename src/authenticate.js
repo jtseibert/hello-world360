@@ -143,7 +143,7 @@ app.get('/getData', function (req, res) {
             console.log('D.TOSTRING call');
             console.log(d.toString('utf-8'));
             console.log('END CALL TO TOSTRING');
-            data += data + d.toString('utf-8');
+            data += d.toString('utf-8');
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
