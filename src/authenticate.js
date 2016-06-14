@@ -145,10 +145,11 @@ app.get('/getData', function (req, res) {
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
-        //var factMap = data.factMap;
+        var factMap = data.factMap;
         //console.log(data);
         //var test = "'T!T'";
         res.send(data.factMap["T!T"].aggregates.value);
+        console.log(data.factMap["T!T"].aggregates.value)
     }
     
     
