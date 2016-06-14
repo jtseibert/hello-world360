@@ -135,13 +135,12 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', (d) => {
-            data = JSON.stringify(d);
             process.stdout.write(d);
         });
     });
 
-    console.log(data);
-    res.send(d);
+    // console.log(data);
+    // res.send(data);
 
     req.end();
 
