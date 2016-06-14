@@ -141,7 +141,8 @@ app.get('/getData', function (req, res) {
             process.stdout.write(d);
             console.log('TESTING IF D IS BUFFER: ' + Buffer.isBuffer(d));
             console.log('D.TOSTRING call');
-            d.toString('utf-8');
+            console.log(d.toString('utf-8'));
+            console.log('END CALL TO TOSTRING');
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
