@@ -121,7 +121,7 @@ app.get('/auth', function (req, res) {
 
 
 var data = "";
-var label
+var label = 'hi'
 
 
 /*************** For getting data ***************/
