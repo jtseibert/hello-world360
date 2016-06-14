@@ -142,11 +142,10 @@ app.get('/getData', function (req, res) {
             data = JSON.parse(data.toString('utf-8'));
             //var factMap = data.factMap;
             console.log(data.factMap["T!T"].aggregates[0].label);
-            res.send(data.factMap["T!T"].aggregates[0].label);
         });      
     })
-
-    req.end();   
+    req.end();
+    res.send(data.factMap["T!T"].aggregates[0].label);
 });
 /************************************************/
 
