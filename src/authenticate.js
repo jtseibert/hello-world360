@@ -138,7 +138,8 @@ app.get('/getData', function (req, res) {
         console.log('headers: ', res.headers);
 
         res.on('data', function(d){
-            process.stdout.write(d);
+            //process.stdout.write(d);
+            req.write('data\n');
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
@@ -149,7 +150,7 @@ app.get('/getData', function (req, res) {
         res.send(data);
     }
     
-    req.write('data\n');
+    
     req.end();
 
     req.on('error', (e) => {
