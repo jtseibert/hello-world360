@@ -141,7 +141,7 @@ app.get('/getData', function (req, res) {
         success: function (data) {
             console.log('success');
         }
-});
+    });
 
     // var req = https.request(options, function(res){
     //     console.log('statusCode: ', res.statusCode);
