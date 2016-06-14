@@ -103,7 +103,7 @@ app.get('/callback', function (req, res) {
         options = {
 	        host: hostURL,
 	        port: 443,
-	        path: '/services/data/v35.0/analytics/reports/00Oa0000008r7sg/describe',
+	        path: '/services/data/v35.0/analytics/reports/00Oa0000008r7sg/',
 	        method: 'GET',
 	        headers: {
 	            'Authorization': 'Bearer ' + token.token.access_token,
@@ -145,6 +145,7 @@ app.get('/getData', function (req, res) {
     if (data){
         console.log('ENTER IF DATA, PRINTING DATA');
         data = JSON.parse(data.toString('utf-8'));
+        data = data.factMap;
         console.log(data);
         res.send(JSON.stringify(data, null, 4));
     }
