@@ -23,7 +23,7 @@
     "https": "1.0.0",
     "http": "0.0.0",
     "buffer-json": "1.0.0",
-    "async": "2.0.0"
+    "async": "2.0.0-rc.6"
   },
   "devDependencies": {},
   "description": ""
