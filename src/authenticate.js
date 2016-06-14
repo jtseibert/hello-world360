@@ -132,12 +132,12 @@ app.get('/getData', function (req, res) {
             data += d;
         });
 
-        req.on('error', (e) => {
+        res.on('error', (e) => {
             console.log('Error found');
             console.error(e);
         });
 
-        req.on('end', function() {
+        res.on('end', function() {
             console.log('ENTER IF DATA, PRINTING DATA');
             data = JSON.parse(data.toString('utf-8'));
             var factMap = data.factMap;
