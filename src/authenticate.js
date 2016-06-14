@@ -140,12 +140,11 @@ app.get('/getData', function (req, res) {
         res.on('end', function(res) {
             console.log('ENTER IF DATA, PRINTING DATA');
             data = JSON.parse(data.toString('utf-8'));
-            //var factMap = data.factMap;
             console.log(data.factMap["T!T"].aggregates[0].label);
         });      
     })
-    req.end();
-    res.send(data.factMap["T!T"].aggregates[0].label);
+    req.end().then(res.send(data.factMap["T!T"].aggregates[0].label));
+    
 });
 /************************************************/
 
