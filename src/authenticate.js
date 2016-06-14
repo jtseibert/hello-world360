@@ -158,7 +158,7 @@ app.get('/getData', function (req, res) {
  //        console.log('Error found');
  //        console.error(e);
  //    });
-});
+// });
 /************************************************/
 
 
