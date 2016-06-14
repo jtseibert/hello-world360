@@ -140,6 +140,7 @@ app.get('/getData', function (req, res) {
         res.on('data', function(d){
             process.stdout.write(d);
             console.log('TESTING IF D IS BUFFER: ' + Buffer.isBuffer(d));
+            d.toString('utf-8');
             //data = JSON.stringify(new Buffer('d'), bufferJson.replacer);
             //data = JSON.parse(JSON.stringify(d));
         });
