@@ -130,7 +130,7 @@ app.get('/getData', function(req, res){
     async.series([
         httpsRequest(req, res),
         function(req,res){
-            res.send(label)            
+            res.send(label);            
         }
     ]);
 });
