@@ -17,9 +17,7 @@ var express = require('express'),
     request = require('request'),
     https = require('https'),
     http = require('http'),
-    oauth2 = require('simple-oauth2'),
-    jquery = require('jquery'),
-    $ = jquery();
+    oauth2 = require('simple-oauth2');
 
 // var url =  'https://na30.salesforce.com/services/data',
 //     theHost = 'https://na30.salesforce.com',
@@ -130,36 +128,28 @@ var data;
 /*************** For getting data ***************/
 // Redirect to pull data from Salesforce
 app.get('/getData', function (req, res) {
-    $.ajax({
-         url: (options.host + options.path),
-         data: data,
-         type: "GET",
-         beforeSend: function(xhr){xhr.setRequestHeader(options.headers);},
-         success: function() { alert('Success!' + authHeader); }
-      });
+    console.log('entering getData');
+
+    var req = https.request(options, function(res){
+        console.log('statusCode: ', res.statusCode);
+        console.log('headers: ', res.headers);
+
+        res.on('data', function(d){
+            process.stdout.write(d);
+            data = JSON.parse(d);
+        });
+    });
+
+    console.log(data);
+    res.send(data);
+
+    req.end();
+
+    req.on('error', (e) => {
+        console.log('Error found');
+        console.error(e);
+    });
 });
-
-    // console.log('entering getData');
-
- //    var req = https.request(options, function(res){
- //        console.log('statusCode: ', res.statusCode);
- //        console.log('headers: ', res.headers);
-
- //        res.on('data', function(d){
- //            process.stdout.write(d);
- //        });
- //    });
-
- //    // console.log(data);
- //    // res.send(data);
-
- //    req.end();
-
- //    req.on('error', (e) => {
- //        console.log('Error found');
- //        console.error(e);
- //    });
-// });
 /************************************************/
 
 
