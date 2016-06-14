@@ -121,7 +121,7 @@ app.get('/auth', function (req, res) {
 
 
 var data = "";
-var label = 'hi'
+var label = "hi"
 
 
 /*************** For getting data ***************/
@@ -148,10 +148,14 @@ app.get('/getData', function (req, res) {
                 });      
             })
             req.end();
+            callback(null,label)
+        },
+        function(arg1,callback){
+            res.send(label)
             callback(null, 'done')
         }
     ], function (err, result) {
-        res.send(label)    
+        // result now equals done
     })    
 });
 /************************************************/
