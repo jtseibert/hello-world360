@@ -167,6 +167,7 @@ app.get('/getData', function(req, res) {
             console.log('label: ' + label)
             var xls = json2xls(data.factMap)
             fs.writeFileSync('/factMap.xlsx',xls,'binary')      
+        })
     })
     req.end()
     res.render('data')
