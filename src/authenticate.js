@@ -39,7 +39,8 @@ var express = require('express'),
     oauth2 = require('simple-oauth2')
     async = require('async'),
     bufferJson = require('buffer-json'),
-    json2xls = require('json2xls')
+    json2xls = require('json2xls'),
+    fs = require('fs')
 
 
 // var url =  'https://na30.salesforce.com/services/data',
