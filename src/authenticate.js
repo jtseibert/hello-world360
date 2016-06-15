@@ -38,7 +38,8 @@ var express = require('express'),
     http = require('http'),
     oauth2 = require('simple-oauth2')
     async = require('async'),
-    bufferJson = require('buffer-json');
+    bufferJson = require('buffer-json'),
+    json2xls = require('json2xls')
 
 
 // var url =  'https://na30.salesforce.com/services/data',
@@ -163,6 +164,8 @@ app.get('/getData', function(req, res) {
             // console.log(data.factMap["T!T"].aggregates[0].label);
             label = data.factMap["T!T"].aggregates[0].label
             console.log('label: ' + label)
+            var xls = json2xls(data.factMap)
+            fs.writeFileSync('factMap.xls',xls,'binary')
         });      
     })
     req.end()
