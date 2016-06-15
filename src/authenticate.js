@@ -166,7 +166,7 @@ app.get('/getData', function(req, res) {
             label = data.factMap["T!T"].aggregates[0].label
             console.log('label: ' + label)
             var xls = json2xls(data.factMap)
-            fs.writeFileSync('./factMap.xlsx',xls,'binary')      
+            fs.writeFileSync('~/factMap.xlsx',xls,'binary')      
         })
     })
     req.end()
