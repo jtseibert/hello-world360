@@ -78,8 +78,8 @@ console.log('Express server started on port 5000');
 /* For oauth2 authentication and token handling */
 // Set the configuration settings
 var credentials = {
-        clientID: '3MVG9uudbyLbNPZMn2emQiwwmoqmcudnURvLui8uICaepT6Egs.LFsHRMAnD00FSog.OXsLKpODzE.jxi.Ffu',
-        clientSecret: '625133588109438640',
+        clientID: '3MVG9uudbyLbNPZOEM.vAy8Y1H8RF8ocpnP1nW2Nt_2a9aFFOjolOIyKa6.1QCCfC9ZreHWPMWEIJhSnQuQqP',
+        clientSecret: '4299800700281945236',
         site: 'https://login.salesforce.com',
         authorizationPath: '/services/oauth2/authorize',
         tokenPath: '/services/oauth2/token',
