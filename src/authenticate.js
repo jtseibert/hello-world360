@@ -97,7 +97,7 @@ var oauth2 = oauth2(credentials);
 var authorization_uri = oauth2.authCode.authorizeURL({
         redirect_uri: 'https://hello-world360.herokuapp.com/callback',
         scope: 'full',
-        display: 'popup'
+        display: 'touch'
     });
 
 // Callbacks
